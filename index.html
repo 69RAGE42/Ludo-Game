@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludo Game | @RAGE</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome Linked -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="controller">
+        <div class="center">
+            <span id="tri1"></span>
+            <span id="tri2"></span>
+            <span id="tri3"></span>
+            <span id="tri4"></span>
+        </div>
+        <button>START</button>
+    </div>
+    
+    <div class="container">
+        <div class="ludo">
+            <div class="upper-room">
+                <div class="rooms" id="room4">
+                    <div class="token-room4" id="token13"><a></a></div>
+                    <div class="token-room4" id="token14"><a></a></div>
+                    <div class="token-room4" id="token15"><a></a></div>
+                    <div class="token-room4" id="token16"><a></a></div>
+                </div>
+                <div class="path-clm" id="path9">
+                    <div class="pxls" id="pxl49"><a></a></div>
+                    <div class="pxls" id="pxl50"><a></a></div>
+                    <div class="pxls" id="pxl51"><a></a></div>
+                    <div class="pxls" id="pxl52"><a></a></div>
+                    <div class="pxls" id="pxl53"><a></a></div>
+                    <div class="pxls" id="pxl54"><a></a></div>
+                </div>
+                <div class="path-clm" id="path8">
+                    <div class="pxls" id="pxl43"><a></a></div>
+                    <div class="pxls" id="pxl44"><a></a></div>
+                    <div class="pxls" id="pxl45"><a></a></div>
+                    <div class="pxls" id="pxl46"><a></a></div>
+                    <div class="pxls" id="pxl47"><a></a></div>
+                    <div class="pxls" id="pxl48"><a></a></div>
+                </div>
+                <div class="path-clm" id="path7">
+                    <div class="pxls" id="pxl37"><a></a></div>
+                    <div class="pxls" id="pxl38"><a></a></div>
+                    <div class="pxls" id="pxl39"><a></a></div>
+                    <div class="pxls" id="pxl40"><a></a></div>
+                    <div class="pxls" id="pxl41"><a></a></div>
+                    <div class="pxls" id="pxl42"><a></a></div>
+                </div>
+                <div class="rooms" id="room3">
+                    <div class="token-room3" id="token09"><a></a></div>
+                    <div class="token-room3" id="token10"><a></a></div>
+                    <div class="token-room3" id="token11"><a></a></div>
+                    <div class="token-room3" id="token12"><a></a></div>
+                </div>
+            </div>
+            <div class="temp">
+                <div class="path-row" id="path10">
+                    <div class="pxls" id="pxl55"><a></a></div>
+                    <div class="pxls" id="pxl56"><a></a></div>
+                    <div class="pxls" id="pxl57"><a></a></div>
+                    <div class="pxls" id="pxl58"><a></a></div>
+                    <div class="pxls" id="pxl59"><a></a></div>
+                    <div class="pxls" id="pxl60"><a></a></div>
+                </div>
+                <div class="path-row" id="path6">
+                    <div class="pxls" id="pxl31"><a></a></div>
+                    <div class="pxls" id="pxl32"><a></a></div>
+                    <div class="pxls" id="pxl33"><a></a></div>
+                    <div class="pxls" id="pxl34"><a></a></div>
+                    <div class="pxls" id="pxl35"><a></a></div>
+                    <div class="pxls" id="pxl36"><a></a></div>
+                </div>
+            </div>
+            <div class="temp">
+                <div class="path-row" id="path11">
+                    <div class="pxls" id="pxl61"><a></a></div>
+                    <div class="pxls" id="pxl62"><a></a></div>
+                    <div class="pxls" id="pxl63"><a></a></div>
+                    <div class="pxls" id="pxl64"><a></a></div>
+                    <div class="pxls" id="pxl65"><a></a></div>
+                    <div class="pxls" id="pxl66"><a></a></div>
+                </div>
+                <div class="path-row" id="path5">
+                    <div class="pxls" id="pxl25"><a></a></div>
+                    <div class="pxls" id="pxl26"><a></a></div>
+                    <div class="pxls" id="pxl27"><a></a></div>
+                    <div class="pxls" id="pxl28"><a></a></div>
+                    <div class="pxls" id="pxl29"><a></a></div>
+                    <div class="pxls" id="pxl30"><a></a></div>
+                </div>
+            </div>
+            <div class="temp">
+                <div class="path-row" id="path12">
+                    <div class="pxls" id="pxl67"><a></a></div>
+                    <div class="pxls" id="pxl68"><a></a></div>
+                    <div class="pxls" id="pxl69"><a></a></div>
+                    <div class="pxls" id="pxl70"><a></a></div>
+                    <div class="pxls" id="pxl71"><a></a></div>
+                    <div class="pxls" id="pxl72"><a></a></div>
+                </div>
+                <div class="path-row" id="path4">
+                    <div class="pxls" id="pxl19"><a></a></div>
+                    <div class="pxls" id="pxl20"><a></a></div>
+                    <div class="pxls" id="pxl21"><a></a></div>
+                    <div class="pxls" id="pxl22"><a></a></div>
+                    <div class="pxls" id="pxl23"><a></a></div>
+                    <div class="pxls" id="pxl24"><a></a></div>
+                </div>
+            </div>
+            <div class="lower-room">
+                <div class="rooms" id="room1">
+                    <div class="token-room1" id="token01"><a></a></div>
+                    <div class="token-room1" id="token02"><a></a></div>
+                    <div class="token-room1" id="token03"><a></a></div>
+                    <div class="token-room1" id="token04"><a></a></div>
+                </div>
+                <div class="path-clm" id="path1">
+                    <div class="pxls" id="pxl01"><a></a></div>
+                    <div class="pxls" id="pxl02"><a></a></div>
+                    <div class="pxls" id="pxl03"><a></a></div>
+                    <div class="pxls" id="pxl04"><a></a></div>
+                    <div class="pxls" id="pxl05"><a></a></div>
+                    <div class="pxls" id="pxl06"><a></a></div>
+                </div>
+                <div class="path-clm" id="path2">
+                    <div class="pxls" id="pxl07"><a></a></div>
+                    <div class="pxls" id="pxl08"><a></a></div>
+                    <div class="pxls" id="pxl09"><a></a></div>
+                    <div class="pxls" id="pxl10"><a></a></div>
+                    <div class="pxls" id="pxl11"><a></a></div>
+                    <div class="pxls" id="pxl12"><a></a></div>
+                </div>
+                <div class="path-clm" id="path3">
+                    <div class="pxls" id="pxl13"><a></a></div>
+                    <div class="pxls" id="pxl14"><a></a></div>
+                    <div class="pxls" id="pxl15"><a></a></div>
+                    <div class="pxls" id="pxl16"><a></a></div>
+                    <div class="pxls" id="pxl17"><a></a></div>
+                    <div class="pxls" id="pxl18"><a></a></div>
+                </div>
+                <div class="rooms" id="room2">
+                    <div class="token-room2" id="token05"><a></a></div>
+                    <div class="token-room2" id="token06"><a></a></div>
+                    <div class="token-room2" id="token07"><a></a></div>
+                    <div class="token-room2" id="token08"><a></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="players">
+        <div class="hero">
+            <div class="player" id="player1">
+                <h1>Player 1 (Red)</h1>
+                <hr>
+                <div class="pawns">
+                    <button id="pawn1"><a class="fa-solid fa-heart"></a></button>
+                    <button id="pawn2"><a class="fa-solid fa-heart"></a></button>
+                    <button id="pawn3"><a class="fa-solid fa-heart"></a></button>
+                    <button id="pawn4"><a class="fa-solid fa-heart"></a></button>
+                </div>
+                <button id="dice" style="left: 185px;"><a class="fa-solid fa-square"></a></button>
+                <div id="texts" style="left: 0px;">
+                    <h6>Turns : 0
+                        Rolls : 0</h6>
+                </div>
+                <div class="pieces">
+                    <button class="piece" id="piece1-red"><a class="fa-solid fa-heart"></a></button>
+                    <button class="piece" id="piece2-red"><a class="fa-regular fa-sun"></a></button>
+                    <button class="piece" id="piece3-red"><a class="fa-regular fa-moon"></a></button>
+                    <button class="piece" id="piece4-red"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button class="piece" id="piece5-red"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button class="piece" id="piece6-red"><a class="fa-solid fa-crown"></a></button>
+                </div>
+            </div>
+            <div class="player" id="player2">
+                <h1>Player 2 (Green)</h1>
+                <hr>
+                <div class="pawns">
+                    <button id="pawn1"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button id="pawn2"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button id="pawn3"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button id="pawn4"><a class="fa-solid fa-puzzle-piece"></a></button>
+                </div>
+                <button id="dice" style="left: 0px;"><a class="fa-solid fa-square"></a></button>
+                <div id="texts">
+                    <h6>Turns : 0
+                        Rolls : 0</h6>
+                </div>
+                <div class="pieces">
+                    <button class="piece" id="piece1-green"><a class="fa-solid fa-heart"></a></button>
+                    <button class="piece" id="piece2-green"><a class="fa-regular fa-sun"></a></button>
+                    <button class="piece" id="piece3-green"><a class="fa-regular fa-moon"></a></button>
+                    <button class="piece" id="piece4-green"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button class="piece" id="piece5-green"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button class="piece" id="piece6-green"><a class="fa-solid fa-crown"></a></button>
+                </div>
+            </div>
+        </div>
+        <div class="hero" style="flex-direction: row-reverse;">
+            <div class="player" id="player3">
+                <h1>Player 3 (Blue)</h1>
+                <hr>
+                <div class="pawns">
+                    <button id="pawn1"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button id="pawn2"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button id="pawn3"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button id="pawn4"><a class="fa-regular fa-paper-plane"></a></button>
+                </div>
+                <button id="dice" style="left: 0px;"><a class="fa-solid fa-square"></a></button>
+                <div id="texts">
+                    <h6>Turns : 0
+                    Rolls : 0</h6>
+                </div>
+                <div class="pieces">
+                    <button class="piece" id="piece1-blue"><a class="fa-solid fa-heart"></a></button>
+                    <button class="piece" id="piece2-blue"><a class="fa-regular fa-sun"></a></button>
+                    <button class="piece" id="piece3-blue"><a class="fa-regular fa-moon"></a></button>
+                    <button class="piece" id="piece4-blue"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button class="piece" id="piece5-blue"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button class="piece" id="piece6-blue"><a class="fa-solid fa-crown"></a></button>
+                </div>
+            </div>
+            <div class="player" id="player4">
+                <h1>Player 4 (Yellow)</h1>
+                <hr>
+                <div class="pawns">
+                    <button id="pawn1"><a class="fa-solid fa-crown"></a></button>
+                    <button id="pawn2"><a class="fa-solid fa-crown"></a></button>
+                    <button id="pawn3"><a class="fa-solid fa-crown"></a></button>
+                    <button id="pawn4"><a class="fa-solid fa-crown"></a></button>
+                </div>
+                <button id="dice" style="left: 185px;"><a class="fa-solid fa-square"></a></button>
+                <div id="texts" style="left: 0px;">
+                    <h6>Turns : 0
+                    Rolls : 0</h6>
+                </div>
+                <div class="pieces">
+                    <button class="piece" id="piece1-yellow"><a class="fa-solid fa-heart"></a></button>
+                    <button class="piece" id="piece2-yellow"><a class="fa-regular fa-sun"></a></button>
+                    <button class="piece" id="piece3-yellow"><a class="fa-regular fa-moon"></a></button>
+                    <button class="piece" id="piece4-yellow"><a class="fa-regular fa-paper-plane"></a></button>
+                    <button class="piece" id="piece5-yellow"><a class="fa-solid fa-puzzle-piece"></a></button>
+                    <button class="piece" id="piece6-yellow"><a class="fa-solid fa-crown"></a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+
+</body>
+</html>
