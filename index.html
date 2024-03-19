@@ -29,11 +29,11 @@
     <div class="container">
       <div class="ludo">
         <div class="upper-room">
-          <div class="rooms" id="room4">
-            <div class="token-room4 token13" id="pxl154"><a></a></div>
-            <div class="token-room4 token14" id="pxl155"><a></a></div>
-            <div class="token-room4 token15" id="pxl157"><a></a></div>
-            <div class="token-room4 token16" id="pxl156"><a></a></div>
+          <div class="rooms" id="room2">
+            <div class="token-room2 token13" id="pxl154"><a></a></div>
+            <div class="token-room2 token14" id="pxl155"><a></a></div>
+            <div class="token-room2 token15" id="pxl157"><a></a></div>
+            <div class="token-room2 token16" id="pxl156"><a></a></div>
           </div>
           <div class="path-clm" id="path9">
             <div class="pxls" id="pxl026"><a></a></div>
@@ -151,11 +151,11 @@
             <div class="pxls" id="pxl051"><a></a></div>
             <div class="pxls" id="pxl052"><a></a></div>
           </div>
-          <div class="rooms" id="room2">
-            <div class="token-room2 token05" id="pxl162"><a></a></div>
-            <div class="token-room2 token06" id="pxl163"><a></a></div>
-            <div class="token-room2 token07" id="pxl165"><a></a></div>
-            <div class="token-room2 token08" id="pxl164"><a></a></div>
+          <div class="rooms" id="room4">
+            <div class="token-room4 token05" id="pxl162"><a></a></div>
+            <div class="token-room4 token06" id="pxl163"><a></a></div>
+            <div class="token-room4 token07" id="pxl165"><a></a></div>
+            <div class="token-room4 token08" id="pxl164"><a></a></div>
           </div>
         </div>
       </div>
@@ -167,12 +167,12 @@
           <h1>Player 1 (Red)</h1>
           <hr />
           <div class="pawns">
-            <button id="pawn1"><a class="fa-solid fa-heart"></a></button>
-            <button id="pawn2"><a class="fa-solid fa-heart"></a></button>
-            <button id="pawn3"><a class="fa-solid fa-heart"></a></button>
-            <button id="pawn4"><a class="fa-solid fa-heart"></a></button>
+            <button class="pawn1" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
+            <button class="pawn2" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
+            <button class="pawn3" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
+            <button class="pawn4" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
           </div>
-          <button id="dice" style="left: 185px">
+          <button class="dice" id="dice-red" style="left: 185px">
             <a class="fa-solid fa-square"></a>
           </button>
           <div id="texts" style="left: 0px">
@@ -199,16 +199,16 @@
             </button>
           </div>
         </div>
-        <div class="player" id="player2">
-          <h1>Player 2 (Green)</h1>
+        <div class="player" id="player4">
+          <h1>Player 4 (Green)</h1>
           <hr />
           <div class="pawns">
-            <button id="pawn1"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button id="pawn2"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button id="pawn3"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button id="pawn4"><a class="fa-solid fa-puzzle-piece"></a></button>
+            <button class="pawn1" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
+            <button class="pawn2" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
+            <button class="pawn3" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
+            <button class="pawn4" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
           </div>
-          <button id="dice" style="left: 0px">
+          <button class="dice" id="dice-green" style="left: 0px">
             <a class="fa-solid fa-square"></a>
           </button>
           <div id="texts">
@@ -241,20 +241,12 @@
           <h1>Player 3 (Blue)</h1>
           <hr />
           <div class="pawns">
-            <button id="pawn1">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button id="pawn2">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button id="pawn3">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button id="pawn4">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
+            <button class="pawn1" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
+            <button class="pawn2" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
+            <button class="pawn3" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
+            <button class="pawn4" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
           </div>
-          <button id="dice" style="left: 0px">
+          <button class="dice" id="dice-blue" style="left: 0px">
             <a class="fa-solid fa-square"></a>
           </button>
           <div id="texts">
@@ -281,16 +273,16 @@
             </button>
           </div>
         </div>
-        <div class="player" id="player4">
-          <h1>Player 4 (Yellow)</h1>
+        <div class="player" id="player2">
+          <h1>Player 2 (Yellow)</h1>
           <hr />
           <div class="pawns">
-            <button id="pawn1"><a class="fa-solid fa-crown"></a></button>
-            <button id="pawn2"><a class="fa-solid fa-crown"></a></button>
-            <button id="pawn3"><a class="fa-solid fa-crown"></a></button>
-            <button id="pawn4"><a class="fa-solid fa-crown"></a></button>
+            <button class="pawn1" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
+            <button class="pawn2" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
+            <button class="pawn3" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
+            <button class="pawn4" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
           </div>
-          <button id="dice" style="left: 185px">
+          <button class="dice" id="dice-yellow" style="left: 185px">
             <a class="fa-solid fa-square"></a>
           </button>
           <div id="texts" style="left: 0px">

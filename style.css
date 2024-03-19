@@ -18,6 +18,8 @@
 }
 
 body {
+  width: 100vw;
+  height: 100vh;
   background-image: url("background.jpg");
   background-color: rgb(255, 200, 240);
   background-size: cover;
@@ -83,10 +85,10 @@ body {
 }
 
 #room2 {
-  background-color: var(--green);
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-  box-shadow: -10px 0px 15px 10px #00000033;
+  background-color: var(--yellow);
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  box-shadow: 10px 0px 15px 10px #00000033;
 }
 
 #room3 {
@@ -97,11 +99,12 @@ body {
 }
 
 #room4 {
-  background-color: var(--yellow);
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  box-shadow: 10px 0px 15px 10px #00000033;
+  background-color: var(--green);
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: -10px 0px 15px 10px #00000033;
 }
+
 
 .token-room1,
 .token-room2,
@@ -278,8 +281,8 @@ body {
 }
 
 #player2 {
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 #player3 {
@@ -288,9 +291,10 @@ body {
 }
 
 #player4 {
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
+
 
 .hero {
   display: flex;
@@ -357,9 +361,10 @@ body {
 
 .pawns button a {
   color: #ffffffa0;
+  transition: all ease-in-out 250ms;
 }
 
-#dice {
+.dice {
   width: 175px;
   height: 165px;
   position: relative;
@@ -371,8 +376,8 @@ body {
   cursor: pointer;
 }
 
-#dice a {
-  font-size: 80px;
+.dice a {
+  font-size: 100px;
   color: #ffffffc0;
 }
 
@@ -402,8 +407,8 @@ body {
 }
 
 #player2 .pieces button a {
-  color: #00cf00b0;
-  filter: drop-shadow(0px 0px 2px #00cf00b0);
+  color: #cfcf00b0;
+  filter: drop-shadow(0px 0px 2px #cfcf00b0) 532;
 }
 
 #player3 .pieces button a {
@@ -412,6 +417,30 @@ body {
 }
 
 #player4 .pieces button a {
-  color: #cfcf00b0;
-  filter: drop-shadow(0px 0px 2px #cfcf00b0) 532;
+  color: #00cf00b0;
+  filter: drop-shadow(0px 0px 2px #00cf00b0);
+}
+
+.pawns button:hover a {
+  transform: scale(1.2);
+}
+
+.blink a {
+  animation-name: blinking;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transition: all ease-in-out 500ms;
+}
+
+@keyframes blinking {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

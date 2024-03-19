@@ -1,4 +1,27 @@
 // Ludo Game Mechanicsm
+function include(file) {
+  let script = document.createElement('script');
+  script.src = file;
+  script.type = 'text/javascript';
+  script.defer = true;
+
+  document.getElementsByTagName('head').item(0).appendChild(script);
+}
+
+include("./backend-logic/LudoBoard.js")
+include("./backend-logic/LudoPiece.js")
+include("./backend-logic/LudoVariables.js")
+include("./backend-logic/LudoEventManager.js")
+
+// Ludo board
+let LB;
+
+// Has the game started?
+let gameStarted = false;
+
+// Has the user rolled the dice?
+let hasRolled = false;
+let rolledNumber = -1
 
 let starPoints = ["#pxl011", "#pxl050", "#pxl024", "#pxl037"];
 let housePoints = ["#pxl003", "#pxl016", "#pxl029", "#pxl042"];
@@ -17,251 +40,16 @@ let colorTokens = [
   "fa-solid fa-crown",
 ];
 
-// let redPathing = [
-//   "#pxl05",
-//   "#pxl04",
-//   "#pxl03",
-//   "#pxl02",
-//   "#pxl01",
-//   "#pxl72",
-//   "#pxl71",
-//   "#pxl70",
-//   "#pxl69",
-//   "#pxl68",
-//   "#pxl67",
-//   "#pxl61",
-//   "#pxl55",
-//   "#pxl56",
-//   "#pxl57",
-//   "#pxl58",
-//   "#pxl59",
-//   "#pxl60",
-//   "#pxl54",
-//   "#pxl53",
-//   "#pxl52",
-//   "#pxl51",
-//   "#pxl50",
-//   "#pxl49",
-//   "#pxl43",
-//   "#pxl37",
-//   "#pxl38",
-//   "#pxl39",
-//   "#pxl40",
-//   "#pxl41",
-//   "#pxl42",
-//   "#pxl31",
-//   "#pxl32",
-//   "#pxl33",
-//   "#pxl34",
-//   "#pxl35",
-//   "#pxl36",
-//   "#pxl30",
-//   "#pxl24",
-//   "#pxl23",
-//   "#pxl22",
-//   "#pxl21",
-//   "#pxl20",
-//   "#pxl19",
-//   "#pxl13",
-//   "#pxl14",
-//   "#pxl15",
-//   "#pxl16",
-//   "#pxl17",
-//   "#pxl18",
-//   "#pxl12",
-//   "#pxl11",
-//   "#pxl10",
-//   "#pxl09",
-//   "#pxl08",
-//   "#pxl07",
-// ];
-
-// let greenPathing = [
-//   "#pxl23",
-//   "#pxl22",
-//   "#pxl21",
-//   "#pxl20",
-//   "#pxl19",
-//   "#pxl13",
-//   "#pxl14",
-//   "#pxl15",
-//   "#pxl16",
-//   "#pxl17",
-//   "#pxl18",
-//   "#pxl12",
-//   "#pxl06",
-//   "#pxl05",
-//   "#pxl04",
-//   "#pxl03",
-//   "#pxl02",
-//   "#pxl01",
-//   "#pxl72",
-//   "#pxl71",
-//   "#pxl70",
-//   "#pxl69",
-//   "#pxl68",
-//   "#pxl67",
-//   "#pxl61",
-//   "#pxl55",
-//   "#pxl56",
-//   "#pxl57",
-//   "#pxl58",
-//   "#pxl59",
-//   "#pxl60",
-//   "#pxl54",
-//   "#pxl53",
-//   "#pxl52",
-//   "#pxl51",
-//   "#pxl50",
-//   "#pxl49",
-//   "#pxl43",
-//   "#pxl37",
-//   "#pxl38",
-//   "#pxl39",
-//   "#pxl40",
-//   "#pxl41",
-//   "#pxl42",
-//   "#pxl31",
-//   "#pxl32",
-//   "#pxl33",
-//   "#pxl34",
-//   "#pxl35",
-//   "#pxl36",
-//   "#pxl30",
-//   "#pxl29",
-//   "#pxl28",
-//   "#pxl27",
-//   "#pxl26",
-//   "#pxl25",
-// ];
-
-// let bluePathing = [
-//   "#pxl38",
-//   "#pxl39",
-//   "#pxl40",
-//   "#pxl41",
-//   "#pxl42",
-//   "#pxl31",
-//   "#pxl32",
-//   "#pxl33",
-//   "#pxl34",
-//   "#pxl35",
-//   "#pxl36",
-//   "#pxl30",
-//   "#pxl24",
-//   "#pxl23",
-//   "#pxl22",
-//   "#pxl21",
-//   "#pxl20",
-//   "#pxl19",
-//   "#pxl13",
-//   "#pxl14",
-//   "#pxl15",
-//   "#pxl16",
-//   "#pxl17",
-//   "#pxl18",
-//   "#pxl12",
-//   "#pxl06",
-//   "#pxl05",
-//   "#pxl04",
-//   "#pxl03",
-//   "#pxl02",
-//   "#pxl01",
-//   "#pxl72",
-//   "#pxl71",
-//   "#pxl70",
-//   "#pxl69",
-//   "#pxl68",
-//   "#pxl67",
-//   "#pxl61",
-//   "#pxl55",
-//   "#pxl56",
-//   "#pxl57",
-//   "#pxl58",
-//   "#pxl59",
-//   "#pxl60",
-//   "#pxl54",
-//   "#pxl53",
-//   "#pxl52",
-//   "#pxl51",
-//   "#pxl50",
-//   "#pxl49",
-//   "#pxl43",
-//   "#pxl44",
-//   "#pxl45",
-//   "#pxl46",
-//   "#pxl47",
-//   "#pxl48",
-// ];
-
-// let yellowPathing = [
-//   "#pxl56",
-//   "#pxl57",
-//   "#pxl58",
-//   "#pxl59",
-//   "#pxl60",
-//   "#pxl54",
-//   "#pxl53",
-//   "#pxl52",
-//   "#pxl51",
-//   "#pxl50",
-//   "#pxl49",
-//   "#pxl43",
-//   "#pxl37",
-//   "#pxl38",
-//   "#pxl39",
-//   "#pxl40",
-//   "#pxl41",
-//   "#pxl42",
-//   "#pxl31",
-//   "#pxl32",
-//   "#pxl33",
-//   "#pxl34",
-//   "#pxl35",
-//   "#pxl36",
-//   "#pxl30",
-//   "#pxl24",
-//   "#pxl23",
-//   "#pxl22",
-//   "#pxl21",
-//   "#pxl20",
-//   "#pxl19",
-//   "#pxl13",
-//   "#pxl14",
-//   "#pxl15",
-//   "#pxl16",
-//   "#pxl17",
-//   "#pxl18",
-//   "#pxl12",
-//   "#pxl06",
-//   "#pxl05",
-//   "#pxl04",
-//   "#pxl03",
-//   "#pxl02",
-//   "#pxl01",
-//   "#pxl72",
-//   "#pxl71",
-//   "#pxl70",
-//   "#pxl69",
-//   "#pxl68",
-//   "#pxl67",
-//   "#pxl61",
-//   "#pxl62",
-//   "#pxl63",
-//   "#pxl64",
-//   "#pxl65",
-//   "#pxl66",
-// ];
-
-let redPosition = [0, 0, 0, 0];
-let greenPosition = [0, 0, 0, 0];
-let bluePosition = [0, 0, 0, 0];
-let yellowPosition = [0, 0, 0, 0];
+let redPosition = [150, 151, 152, 153];
+let yellowPosition = [154, 155, 156, 157];
+let bluePosition = [158, 159, 160, 161];
+let greenPosition = [162, 163, 164, 165];
 
 let allTurns = [0, 0, 0, 0];
 let allRolls = [0, 0, 0, 0];
 
 function redPlays(t1, t2, t3, t4) {
+  console.log(t1, t2, t3, t4)
   let pxl1 = document.querySelector(t1 + " a");
   let pxl2 = document.querySelector(t2 + " a");
   let pxl3 = document.querySelector(t3 + " a");
@@ -277,38 +65,40 @@ function redPlays(t1, t2, t3, t4) {
   pxl3.style.color = "#df0000b0";
   pxl4.style.color = "#df0000b0";
 
-  pxl1.style.textShadow = "0px 0px 10px #ff0000ff";
-  pxl2.style.textShadow = "0px 0px 10px #ff0000ff";
-  pxl3.style.textShadow = "0px 0px 10px #ff0000ff";
-  pxl4.style.textShadow = "0px 0px 10px #ff0000ff";
+  pxl1.style.filter = "drop-shadow(0px 0px 15px #ff0000ff)";
+  pxl2.style.filter = "drop-shadow(0px 0px 15px #ff0000ff)";
+  pxl3.style.filter = "drop-shadow(0px 0px 15px #ff0000ff)";
+  pxl4.style.filter = "drop-shadow(0px 0px 15px #ff0000ff)";
 
   document.querySelector("#player1 #texts h6").innerHTML =
     "Turns : " + allTurns[0] + " Rolls : " + allRolls[0];
 }
 
 function greenPlays(t1, t2, t3, t4) {
+  console.log(t1, t2, t3, t4)
   let pxl1 = document.querySelector(t1 + " a");
   let pxl2 = document.querySelector(t2 + " a");
   let pxl3 = document.querySelector(t3 + " a");
   let pxl4 = document.querySelector(t4 + " a");
 
-  pxl1.classList = colorTokens[1];
-  pxl2.classList = colorTokens[1];
-  pxl3.classList = colorTokens[1];
-  pxl4.classList = colorTokens[1];
+  pxl1.classList = colorTokens[3];
+  pxl2.classList = colorTokens[3];
+  pxl3.classList = colorTokens[3];
+  pxl4.classList = colorTokens[3];
 
   pxl1.style.color = "#00cf00b0";
   pxl2.style.color = "#00cf00b0";
   pxl3.style.color = "#00cf00b0";
   pxl4.style.color = "#00cf00b0";
 
-  pxl1.style.textShadow = "0px 0px 10px #00ff00ff";
-  pxl2.style.textShadow = "0px 0px 10px #00ff00ff";
-  pxl3.style.textShadow = "0px 0px 10px #00ff00ff";
-  pxl4.style.textShadow = "0px 0px 10px #00ff00ff";
+  pxl1.style.filter = "drop-shadow(0px 0px 15px #00ff00ff)";
+  pxl2.style.filter = "drop-shadow(0px 0px 15px #00ff00ff)";
+  pxl3.style.filter = "drop-shadow(0px 0px 15px #00ff00ff)";
+  pxl4.style.filter = "drop-shadow(0px 0px 15px #00ff00ff)";
 }
 
 function bluePlays(t1, t2, t3, t4) {
+  console.log(t1, t2, t3, t4)
   let pxl1 = document.querySelector(t1 + " a");
   let pxl2 = document.querySelector(t2 + " a");
   let pxl3 = document.querySelector(t3 + " a");
@@ -324,44 +114,33 @@ function bluePlays(t1, t2, t3, t4) {
   pxl3.style.color = "#0000cfb0";
   pxl4.style.color = "#0000cfb0";
 
-  pxl1.style.textShadow = "0px 0px 10px #0000ffff";
-  pxl2.style.textShadow = "0px 0px 10px #0000ffff";
-  pxl3.style.textShadow = "0px 0px 10px #0000ffff";
-  pxl4.style.textShadow = "0px 0px 10px #0000ffff";
+  pxl1.style.filter = "drop-shadow(0px 0px 15px #0000ffff)";
+  pxl2.style.filter = "drop-shadow(0px 0px 15px #0000ffff)";
+  pxl3.style.filter = "drop-shadow(0px 0px 15px #0000ffff)";
+  pxl4.style.filter = "drop-shadow(0px 0px 15px #0000ffff)";
 }
 
 function yellowPlays(t1, t2, t3, t4) {
+  console.log(t1, t2, t3, t4)
   let pxl1 = document.querySelector(t1 + " a");
   let pxl2 = document.querySelector(t2 + " a");
   let pxl3 = document.querySelector(t3 + " a");
   let pxl4 = document.querySelector(t4 + " a");
 
-  pxl1.classList = colorTokens[3];
-  pxl2.classList = colorTokens[3];
-  pxl3.classList = colorTokens[3];
-  pxl4.classList = colorTokens[3];
+  pxl1.classList = colorTokens[1];
+  pxl2.classList = colorTokens[1];
+  pxl3.classList = colorTokens[1];
+  pxl4.classList = colorTokens[1];
 
   pxl1.style.color = "#cfcf00b0";
   pxl2.style.color = "#cfcf00b0";
   pxl3.style.color = "#cfcf00b0";
   pxl4.style.color = "#cfcf00b0";
 
-  pxl1.style.textShadow = "0px 0px 10px #ffff00ff";
-  pxl2.style.textShadow = "0px 0px 10px #ffff00ff";
-  pxl3.style.textShadow = "0px 0px 10px #ffff00ff";
-  pxl4.style.textShadow = "0px 0px 10px #ffff00ff";
-}
-
-function removeToken(t1, t2, t3, t4) {
-  let pxl1 = document.querySelector(t1 + " a");
-  let pxl2 = document.querySelector(t2 + " a");
-  let pxl3 = document.querySelector(t3 + " a");
-  let pxl4 = document.querySelector(t4 + " a");
-
-  pxl1.classList = "";
-  pxl2.classList = "";
-  pxl3.classList = "";
-  pxl4.classList = "";
+  pxl1.style.filter = "drop-shadow(0px 0px 15px #ffff00ff)";
+  pxl2.style.filter = "drop-shadow(0px 0px 15px #ffff00ff)";
+  pxl3.style.filter = "drop-shadow(0px 0px 15px #ffff00ff)";
+  pxl4.style.filter = "drop-shadow(0px 0px 15px #ffff00ff)";
 }
 
 function checkForStars(element) {
@@ -390,8 +169,6 @@ function checkForHouses(element) {
   }
 }
 
-function activeTokens(t1, t2, t3, t4) {}
-
 // Ludo Game Functionality
 
 let colors = ["red", "green", "blue", "yellow"];
@@ -402,50 +179,34 @@ colors.forEach((element) => {
       switch (element) {
         case "red":
           {
-            document.querySelector("#player1 .pawns #pawn1 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns #pawn2 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns #pawn3 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns #pawn4 a").classList =
-              tokenShapes[i - 1];
-          }
-          break;
-        case "green":
-          {
-            document.querySelector("#player2 .pawns #pawn1 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns #pawn2 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns #pawn3 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns #pawn4 a").classList =
-              tokenShapes[i - 1];
-          }
-          break;
-        case "blue":
-          {
-            document.querySelector("#player3 .pawns #pawn1 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns #pawn2 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns #pawn3 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns #pawn4 a").classList =
-              tokenShapes[i - 1];
+            document.querySelector("#player1 .pawns .pawn1 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player1 .pawns .pawn2 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player1 .pawns .pawn3 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player1 .pawns .pawn4 a").classList = tokenShapes[i - 1];
           }
           break;
         case "yellow":
           {
-            document.querySelector("#player4 .pawns #pawn1 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns #pawn2 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns #pawn3 a").classList =
-              tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns #pawn4 a").classList =
-              tokenShapes[i - 1];
+            document.querySelector("#player2 .pawns .pawn1 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player2 .pawns .pawn2 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player2 .pawns .pawn3 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player2 .pawns .pawn4 a").classList = tokenShapes[i - 1];
+          }
+          break;
+        case "blue":
+          {
+            document.querySelector("#player3 .pawns .pawn1 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player3 .pawns .pawn2 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player3 .pawns .pawn3 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player3 .pawns .pawn4 a").classList = tokenShapes[i - 1];
+          }
+          break;
+        case "green":
+          {
+            document.querySelector("#player4 .pawns .pawn1 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player4 .pawns .pawn2 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player4 .pawns .pawn3 a").classList = tokenShapes[i - 1];
+            document.querySelector("#player4 .pawns .pawn4 a").classList = tokenShapes[i - 1];
           }
           break;
       }
@@ -453,101 +214,168 @@ colors.forEach((element) => {
   }
 });
 
-document
-  .querySelector(".controller button")
-  .addEventListener("click", function () {
-    document.querySelector(".controller button").style.backdropFilter =
-      "blur(0px)";
-    document.querySelector(".controller button").style.opacity = 0;
-    setTimeout(() => {
-      document.querySelector(".controller button").style.display = "none";
-    }, 1000);
+document.querySelector(".controller button").addEventListener("click", () => {
+  if (gameStarted)
+    return;
 
-    colorTokens[0] = document.querySelector(
-      "#player1 .pawns #pawn1 a"
-    ).classList;
-    colorTokens[0] = document.querySelector(
-      "#player1 .pawns #pawn2 a"
-    ).classList;
-    colorTokens[0] = document.querySelector(
-      "#player1 .pawns #pawn3 a"
-    ).classList;
-    colorTokens[0] = document.querySelector(
-      "#player1 .pawns #pawn4 a"
-    ).classList;
+  document.querySelector(".controller button").style.backdropFilter = "blur(0px)";
+  document.querySelector(".controller button").style.opacity = 0;
+  setTimeout(() => {
+    document.querySelector(".controller button").style.display = "none";
+  }, 1000);
 
-    colorTokens[1] = document.querySelector(
-      "#player2 .pawns #pawn1 a"
-    ).classList;
-    colorTokens[1] = document.querySelector(
-      "#player2 .pawns #pawn2 a"
-    ).classList;
-    colorTokens[1] = document.querySelector(
-      "#player2 .pawns #pawn3 a"
-    ).classList;
-    colorTokens[1] = document.querySelector(
-      "#player2 .pawns #pawn4 a"
-    ).classList;
+  colorTokens[0] = document.querySelector("#player1 .pawns .pawn1 a").classList;
+  colorTokens[0] = document.querySelector("#player1 .pawns .pawn2 a").classList;
+  colorTokens[0] = document.querySelector("#player1 .pawns .pawn3 a").classList;
+  colorTokens[0] = document.querySelector("#player1 .pawns .pawn4 a").classList;
 
-    colorTokens[2] = document.querySelector(
-      "#player3 .pawns #pawn1 a"
-    ).classList;
-    colorTokens[2] = document.querySelector(
-      "#player3 .pawns #pawn2 a"
-    ).classList;
-    colorTokens[2] = document.querySelector(
-      "#player3 .pawns #pawn3 a"
-    ).classList;
-    colorTokens[2] = document.querySelector(
-      "#player3 .pawns #pawn4 a"
-    ).classList;
+  colorTokens[1] = document.querySelector("#player2 .pawns .pawn1 a").classList;
+  colorTokens[1] = document.querySelector("#player2 .pawns .pawn2 a").classList;
+  colorTokens[1] = document.querySelector("#player2 .pawns .pawn3 a").classList;
+  colorTokens[1] = document.querySelector("#player2 .pawns .pawn4 a").classList;
 
-    colorTokens[3] = document.querySelector(
-      "#player4 .pawns #pawn1 a"
-    ).classList;
-    colorTokens[3] = document.querySelector(
-      "#player4 .pawns #pawn2 a"
-    ).classList;
-    colorTokens[3] = document.querySelector(
-      "#player4 .pawns #pawn3 a"
-    ).classList;
-    colorTokens[3] = document.querySelector(
-      "#player4 .pawns #pawn4 a"
-    ).classList;
+  colorTokens[2] = document.querySelector("#player3 .pawns .pawn1 a").classList;
+  colorTokens[2] = document.querySelector("#player3 .pawns .pawn2 a").classList;
+  colorTokens[2] = document.querySelector("#player3 .pawns .pawn3 a").classList;
+  colorTokens[2] = document.querySelector("#player3 .pawns .pawn4 a").classList;
 
-    document.querySelectorAll(".pieces .piece").forEach((element) => {
-      element.style.display = "none";
-      document.querySelector(".players").style.gap = "180px";
-      document.querySelectorAll(".player").forEach((elmnt) => {
-        elmnt.style.height = "360px";
-      });
+  colorTokens[3] = document.querySelector("#player4 .pawns .pawn1 a").classList;
+  colorTokens[3] = document.querySelector("#player4 .pawns .pawn2 a").classList;
+  colorTokens[3] = document.querySelector("#player4 .pawns .pawn3 a").classList;
+  colorTokens[3] = document.querySelector("#player4 .pawns .pawn4 a").classList;
+
+  document.querySelectorAll(".pieces .piece").forEach((element) => {
+    element.style.display = "none";
+    document.querySelector(".players").style.gap = "180px";
+    document.querySelectorAll(".player").forEach((elmnt) => {
+      elmnt.style.height = "360px";
     });
-
-    redPlays("#pxl150", "#pxl151", "#pxl152", "#pxl153");
-    greenPlays("#pxl162", "#pxl163", "#pxl164", "#pxl165");
-    bluePlays("#pxl158", "#pxl159", "#pxl160", "#pxl161");
-    yellowPlays("#pxl154", "#pxl155", "#pxl156", "#pxl157");
-
-    starPoints.forEach((element) => checkForStars(element));
-    housePoints.forEach((element) => checkForHouses(element));
-
-    // activeTokens("#token01", "#token02", "#token03", "#token04");
   });
 
-// let redDice = document.querySelector("#player1 #dice");
-// redDice.addEventListener(
-//     "click",
-//     function() {
-//         let roll = Math.ceil(Math.random() * 6);
-//         removeToken(redPathing[redPosition[0]], "#token02", "#token03", "#token04");
-//         let rollText = (roll == 1) ? ("one") : ((roll == 2) ? ("two") : ((roll == 3) ? ("three") : ((roll == 4) ? ("four") : ((roll == 5) ? ("five") : ("six")))));
-//         redPosition[0] = redPosition[0] + roll;
-//         allTurns[0]++;
-//         allRolls[0] = allRolls[0] + roll;
-//         document.querySelector("#player1 #dice a").classList = "fa-solid fa-dice-"+rollText;
-//         redPlays(redPathing[redPosition[0]], "#token02", "#token03", "#token04");
+  redPlays("#pxl150", "#pxl151", "#pxl152", "#pxl153");
+  greenPlays("#pxl162", "#pxl163", "#pxl164", "#pxl165");
+  bluePlays("#pxl158", "#pxl159", "#pxl160", "#pxl161");
+  yellowPlays("#pxl154", "#pxl155", "#pxl156", "#pxl157");
 
-//         starPoints.forEach(element => checkForStars(element));
-//         housePoints.forEach(element => checkForHouses(element));
-//     }
-// );
+  starPoints.forEach((element) => checkForStars(element));
+  housePoints.forEach((element) => checkForHouses(element));
+
+  LB = new LudoBoard()
+  LB.init([
+    { playerId: 1, color: "red" },
+    { playerId: 2, color: "yellow" },
+    { playerId: 3, color: "blue" },
+    { playerId: 4, color: "green" }
+  ])
+
+  console.log(LB.currentTurn.playerId, LB.currentTurn.color) // helpful for testing
+  document.querySelector("#dice-" + LB.currentTurn.color).className = "dice blink";
+  gameStarted = true;
+  activatePawnButtons();
+});
+
+// dice buttons
+document.querySelectorAll(".dice").forEach(clr => {
+  clr.addEventListener("click", () => {
+    if (!gameStarted || LB.currentTurn.color != clr.id.substring(5, 69) || hasRolled) return;
+    rolledNumber = LB.roll()
+    hasRolled = true
+
+    console.log("Rolled number:", rolledNumber)
+
+    // Dice animation start (ends in LudoBoard.nextTurn)
+    document.querySelector("#dice-" + LB.currentTurn.color).className = "dice";
+
+    // Pawn buttons animation start (ends in pawnButtonCallback)
+    document.querySelectorAll("#pawn-" + LB.currentTurn.color).forEach(pawn => {
+      pawn.className = pawn.className.substring(0, 5) + " blink";
+    })
+
+    switch (rolledNumber) {
+      case 1: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-one";
+        break;
+      }
+      case 2: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-two";
+        break;
+      }
+      case 3: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-three";
+        break;
+      }
+      case 4: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-four";
+        break;
+      }
+      case 5: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-five";
+        break;
+      }
+      case 6: {
+        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-six";
+        break;
+      }
+    }
+
+  })
+})
+
+// token buttons
+function activatePawnButtons() {
+  for (let color of colors) {
+    document.querySelectorAll("#pawn-" + color).forEach(pawns => {
+      let color = pawns.id.substring(5, 69)
+      pawns.addEventListener("click", () => { pawnButtonCallback(color, color[0] + pawns.className[4]) })
+    })
+  }
+}
+
+function pawnButtonCallback(color, finalPieceName) {
+  if (!hasRolled || LB.currentTurn.color != color) return
+  let piece = LB.pieces[LB.currentTurn.playerId][finalPieceName]
+  let oldPos = piece.position
+  console.log(color, finalPieceName)
+  console.log(piece)
+
+  piece.move(rolledNumber)
+  if (oldPos != piece.position) {
+    console.log("new piece pos", piece.position)
+
+    switch (color) { // lmfao
+      case "red": {
+        redPosition[finalPieceName[1] - 1] = String(piece.position).padStart(3, "0");
+        redPlays("#pxl" + redPosition[0], "#pxl" + redPosition[1], "#pxl" + redPosition[2], "#pxl" + redPosition[3]);
+        break;
+      }
+
+      case "yellow": {
+        yellowPosition[finalPieceName[1] - 1] = String(piece.position).padStart(3, "0");
+        yellowPlays("#pxl" + yellowPosition[0], "#pxl" + yellowPosition[1], "#pxl" + yellowPosition[2], "#pxl" + yellowPosition[3]);
+        break;
+      }
+
+      case "blue": {
+        bluePosition[finalPieceName[1] - 1] = String(piece.position).padStart(3, "0");
+        bluePlays("#pxl" + bluePosition[0], "#pxl" + bluePosition[1], "#pxl" + bluePosition[2], "#pxl" + bluePosition[3]);
+        break;
+      }
+
+      case "green": {
+        greenPosition[finalPieceName[1] - 1] = String(piece.position).padStart(3, "0");
+        greenPlays("#pxl" + greenPosition[0], "#pxl" + greenPosition[1], "#pxl" + greenPosition[2], "#pxl" + greenPosition[3]);
+        break;
+      }
+
+    }
+  }
+
+  // Pawn buttons animation end
+  document.querySelectorAll("#pawn-" + LB.currentTurn.color).forEach(pawn => {
+    pawn.className = pawn.className.substring(0, pawn.className.lastIndexOf(" "));
+  })
+
+  LB.nextTurn();
+  hasRolled = false;
+  rolledNumber = -1;
+}
