@@ -1,393 +1,417 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: "Karla", sans-serif;
-    font-size: 32px;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Karla", sans-serif;
+  font-size: 32px;
 }
 
 :root {
+  /* Primary Colors */
 
-    /* Primary Colors */
-
-    --red: #ff000080;
-    --green: #00ff0080;
-    --blue: #0000ff80;
-    --yellow: #ffff0080;
-
+  --red: #ff000080;
+  --green: #00ff0080;
+  --blue: #0000ff80;
+  --yellow: #ffff0080;
 }
 
 body {
-    background-image: url("background.jpg");
-    background-size: cover;
-    overflow: hidden;
+  background-image: url("background.jpg");
+  background-color: rgb(255, 200, 240);
+  background-size: cover;
+  background-blend-mode: multiply;
+  overflow: hidden;
 }
 
 /* Game Framework */
 
 .container {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ludo {
-    width: 900px;
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0px;
-    /* border-radius: 25px; */
+  width: 900px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0px;
+  /* border-radius: 25px; */
 }
 
-.upper-room, .lower-room {
-    width: 900px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.upper-room,
+.lower-room {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .temp {
-    width: 900px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  width: 900px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .rooms {
-    width: 360px;
-    height: 360px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 60.1px;
-    border-radius: 25px;
-    backdrop-filter: blur(40px);
+  width: 360px;
+  height: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 60.1px;
+  border-radius: 25px;
+  backdrop-filter: blur(40px);
 }
 
 #room1 {
-    background-color: var(--red);
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    box-shadow: 10px 0px 15px 10px #00000033;
+  background-color: var(--red);
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  box-shadow: 10px 0px 15px 10px #00000033;
 }
 
 #room2 {
-    background-color: var(--green);
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    box-shadow: -10px 0px 15px 10px #00000033;
+  background-color: var(--green);
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: -10px 0px 15px 10px #00000033;
 }
 
 #room3 {
-    background-color: var(--blue);
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
-    box-shadow: -10px 0px 15px 10px #00000033;
+  background-color: var(--blue);
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: -10px 0px 15px 10px #00000033;
 }
 
 #room4 {
-    background-color: var(--yellow);
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    box-shadow: 10px 0px 15px 10px #00000033;
+  background-color: var(--yellow);
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  box-shadow: 10px 0px 15px 10px #00000033;
 }
 
-.token-room1, .token-room2, .token-room3, .token-room4 {
-    position: relative;
-    top: 0px;
-    left: 0px;
-    width: 80px;
-    height: 80px;
-    background-color: #000000a0;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.token-room1,
+.token-room2,
+.token-room3,
+.token-room4 {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 80px;
+  height: 80px;
+  background-color: #000000a0;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .path-clm {
-    width: 60px;
-    height: 360px;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+  width: 60px;
+  height: 360px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .path-row {
-    width: 360px;
-    height: 60px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+  width: 360px;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .pxls {
-    width: 60px;
-    height: 60px;
-    background-color: #ffffff80;
-    backdrop-filter: blur(20px);
-    border: 0.1px solid black;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff80;
+  backdrop-filter: blur(20px);
+  border: 0.1px solid black;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pxls a {
-    opacity: 1;
+  opacity: 1;
 }
 
-#path2 #pxl07, #path2 #pxl08, #path2 #pxl09, #path2 #pxl10, #path2 #pxl11, #path1 #pxl05 {
-    background-color: var(--red);
+#path2 #pxl100,
+#path2 #pxl101,
+#path2 #pxl102,
+#path2 #pxl103,
+#path2 #pxl104,
+#path1 #pxl003 {
+  background-color: var(--red);
 }
 
-#path11 #pxl62, #path11 #pxl63, #path11 #pxl64, #path11 #pxl65, #path11 #pxl66, #path10 #pxl56 {
-    background-color: var(--yellow);
+#path11 #pxl106,
+#path11 #pxl107,
+#path11 #pxl108,
+#path11 #pxl109,
+#path11 #pxl110,
+#path10 #pxl016 {
+  background-color: var(--yellow);
 }
 
-#path5 #pxl25, #path5 #pxl26, #path5 #pxl27, #path5 #pxl28, #path5 #pxl29, #path4 #pxl23 {
-    background-color: var(--green);
+#path5 #pxl122,
+#path5 #pxl121,
+#path5 #pxl120,
+#path5 #pxl119,
+#path5 #pxl118,
+#path4 #pxl042 {
+  background-color: var(--green);
 }
 
-#path8 #pxl44, #path8 #pxl45, #path8 #pxl46, #path8 #pxl47, #path8 #pxl48, #path7 #pxl38 {
-    background-color: var(--blue);
+#path8 #pxl112,
+#path8 #pxl113,
+#path8 #pxl114,
+#path8 #pxl115,
+#path8 #pxl116,
+#path7 #pxl029 {
+  background-color: var(--blue);
 }
 
 .controller {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .controller button {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    font-family: "Karla", sans-serif;
-    font-weight: 700;
-    font-size: 40px;
-    border-style: none;
-    border-radius: 50%;
-    background: transparent;
-    backdrop-filter: blur(15px);
-    box-shadow: 0px 0px 5px 5px #00000033, inset 0px 0px 5px 2.5px #00000033;
-    transition: all ease-out 0.3s;
-    cursor: pointer;
-    z-index: 2;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  border-style: none;
+  border-radius: 50%;
+  background: transparent;
+  backdrop-filter: blur(15px);
+  box-shadow: 0px 0px 5px 5px #00000033, inset 0px 0px 5px 2.5px #00000033;
+  transition: all ease-out 0.3s;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .controller button:hover {
-    border-radius: 5px;
-    box-shadow: 0px 0px 0px 0px, inset 0px 0px 5px 0px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0px 0px, inset 0px 0px 5px 0px;
 }
 
 .center {
-    width: 180px;
-    height: 180px;
-    display: flex;
-    position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  position: relative;
 }
 
-.center #tri1 {
-    border-bottom: 90px solid var(--red);
-    border-right: 90px solid transparent;
-    border-left: 90px solid transparent;
-    position: absolute;
-    bottom: 0px;
+.center .tri1 {
+  border-bottom: 90px solid var(--red);
+  border-right: 90px solid transparent;
+  border-left: 90px solid transparent;
+  position: absolute;
+  bottom: 0px;
 }
 
-.center #tri2 {
-    border-top: 90px solid var(--blue);
-    border-right: 90px solid transparent;
-    border-left: 90px solid transparent;
-    position: absolute;
-    top: 0px;
+.center .tri2 {
+  border-top: 90px solid var(--blue);
+  border-right: 90px solid transparent;
+  border-left: 90px solid transparent;
+  position: absolute;
+  top: 0px;
 }
 
-.center #tri3 {
-    border-right: 90px solid var(--green);
-    border-top: 90px solid transparent;
-    border-bottom: 90px solid transparent;
-    position: absolute;
-    right: 0px;
+.center .tri3 {
+  border-right: 90px solid var(--green);
+  border-top: 90px solid transparent;
+  border-bottom: 90px solid transparent;
+  position: absolute;
+  right: 0px;
 }
 
-.center #tri4 {
-    border-left: 90px solid var(--yellow);
-    border-bottom: 90px solid transparent;
-    border-top: 90px solid transparent;
-    position: absolute;
-    left: 0px;
+.center .tri4 {
+  border-left: 90px solid var(--yellow);
+  border-bottom: 90px solid transparent;
+  border-top: 90px solid transparent;
+  position: absolute;
+  left: 0px;
 }
 
 /* Hero Framework */
 
 .players {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 300ms;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 300ms;
 }
 
 #player1 {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 #player2 {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 #player3 {
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 #player4 {
-    border-bottom-right-radius: 0px;
-    border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .hero {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 900px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 900px;
 }
 
 .player {
-    width: 400px;
-    height: 420px;
-    background-color: #ffffff0f;
-    backdrop-filter: blur(40px);
-    box-shadow: 0px 0px 15px 10px #00000033;
-    border-radius: 25px;
-    padding: 20px;
-    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms;
+  width: 400px;
+  height: 420px;
+  background-color: #ffffff0f;
+  backdrop-filter: blur(40px);
+  box-shadow: 0px 0px 15px 10px #00000033;
+  border-radius: 25px;
+  padding: 20px;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms;
 }
 
 .player h1 {
-    text-align: center;
-    font-family: "Karla", sans-serif;
-    font-weight: 700;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
 }
 
 .player hr {
-    border: none;
-    border-top: 1px solid black;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
-    position: relative;
-    top: 20px;
+  border: none;
+  border-top: 1px solid black;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  position: relative;
+  top: 20px;
 }
 
 #texts {
-    position: relative;
-    top: -70px;
-    left: 195px;
-    width: 165px;
-    text-align: center;
+  position: relative;
+  top: -70px;
+  left: 195px;
+  width: 165px;
+  text-align: center;
 }
 
 .pawns {
-    width: 360px;
-    height: 60px;
-    position: relative;
-    top: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 360px;
+  height: 60px;
+  position: relative;
+  top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .pawns button {
-    width: 80px;
-    height: 60px;
-    border-style: none;
-    background: transparent;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 10px 5px #00000033;
-    cursor: pointer;
+  width: 80px;
+  height: 60px;
+  border-style: none;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 5px #00000033;
+  cursor: pointer;
 }
 
 .pawns button a {
-    color: #ffffffa0;
+  color: #ffffffa0;
 }
 
 #dice {
-    width: 175px;
-    height: 165px;
-    position: relative;
-    top: 50px;
-    border-style: none;
-    background: transparent;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 10px 5px #00000033;
-    cursor: pointer;
+  width: 175px;
+  height: 165px;
+  position: relative;
+  top: 50px;
+  border-style: none;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 5px #00000033;
+  cursor: pointer;
 }
 
 #dice a {
-    font-size: 80px;
-    color: #ffffffc0;
+  font-size: 80px;
+  color: #ffffffc0;
 }
 
 .pieces {
-    width: 360px;
-    height: 75px;
-    position: relative;
-    top: -25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 360px;
+  height: 75px;
+  position: relative;
+  top: -25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .pieces button {
-    width: 50px;
-    height: 50px;
-    border-style: none;
-    background: transparent;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 10px 5px #00000033;
-    cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-style: none;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 10px 5px #00000033;
+  cursor: pointer;
 }
 
 #player1 .pieces button a {
-    color: #df0000b0;
-    text-shadow: 0px 0px 10px #ff0000ff;
+  color: #df0000b0;
+  filter: drop-shadow(0px 0px 2px #df0000b0);
 }
 
 #player2 .pieces button a {
-    color: #00cf00b0;
-    text-shadow: 0px 0px 10px #00ff00ff;
+  color: #00cf00b0;
+  filter: drop-shadow(0px 0px 2px #00cf00b0);
 }
 
 #player3 .pieces button a {
-    color: #0000cfb0;
-    text-shadow: 0px 0px 10px #0000ffff;
+  color: #0000cfb0;
+  filter: drop-shadow(0px 0px 2px #0000cfb0);
 }
 
 #player4 .pieces button a {
-    color: #cfcf00b0;
-    text-shadow: 0px 0px 10px #ffff00ff;
+  color: #cfcf00b0;
+  filter: drop-shadow(0px 0px 2px #cfcf00b0) 532;
 }
