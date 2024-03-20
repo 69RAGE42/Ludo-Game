@@ -391,3 +391,8 @@ function updateTurnsAndRolls(playerId) {
   document.querySelector("#player" + playerId + " #texts h6").innerHTML =
     "Turns : " + allTurns[playerId - 1] + " Rolls : " + allRolls[playerId - 1];
 }
+
+// called when n - 1 amount of people win the game
+function gameOver() {
+
+}
