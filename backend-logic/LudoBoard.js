@@ -1,25 +1,12 @@
 class LudoBoard {
 
-    //public pieces: { [playerId: string]: { [pieceName: string]: LudoPiece } }
-    //public players: any[];
-    //public colorOwners: { [key in LudoColors]?: string } = {};
-    //public playerColors: { [key: string]: LudoColors } = {};
-    //public currentTurn: { playerId?: string, color?: LudoColors, availableTurns?: number } | undefined;
-
-    // future shit
-    // public metadata!: {
-    //     gameType: "online" | "ai"
-    // }
-
-    //public customData: Map<any, any>
-    // <"rollData", number>
-
     constructor() {
         this.pieces = {}
         this.players = []
         this.colorOwners = []
         this.playerColors = []
-        this.lastRoll = {}
+        this.rolledSixes = 0;
+        this.winners = {}
     }
 
     async init(playerData) {
@@ -40,12 +27,6 @@ class LudoBoard {
         }
         let rndPlayer = Math.floor(Math.random() * this.players.length)
         this.currentTurn = { playerId: this.players[rndPlayer].playerId, color: this.players[rndPlayer].color, availableTurns: 1 }
-
-        // event emitter shit
-        // yudo.emit("ludoBegin", {
-        //     gameBoard: this
-        // })
-
     }
 
     getPiece(name, playerId) {
@@ -67,9 +48,8 @@ class LudoBoard {
     }
 
     nextTurn() {
-        document.querySelector("#dice-"+this.currentTurn.color).className = "dice";
-        
         if (!this.currentTurn) return;
+        if (this.currentTurn.availableTurns) return
 
         if (this.currentTurn.color === "red") {
             let nextPlayer = this.colorOwners["yellow"] || this.colorOwners["blue"] || this.colorOwners["green"]
@@ -88,20 +68,29 @@ class LudoBoard {
             if (!nextPlayer) return
             this.currentTurn = { playerId: nextPlayer, color: this.playerColors[nextPlayer], availableTurns: 1 }
         }
-        
-        // Dice animation end
-        document.querySelector("#dice-"+this.currentTurn.color).className = "dice blink";
+
+        this.rolledSixes = 0;
     }
 
     roll() {
-
-        if(this.lastRoll.color == this.currentTurn.color) return this.lastRoll.roll;
-
         let roll = Math.ceil(Math.random() * 6)
-        this.lastRoll = {
-            color: this.currentTurn.color,
-            roll: roll
+        this.currentTurn.availableTurns--;
+        if(roll == 6) {
+            this.currentTurn.availableTurns++;
+            //this.rolledSixes++;
+        }
+
+        if(this.rolledSixes === 3) {
+            this.currentTurn.availableTurns = 0;
+            this.rolledSixes = 0;
+            return 18;
         }
         return roll;
+    }
+
+    addWinner(color) {
+        this.winners[color] = this.pieces[this.colorOwners[color]]
+        delete this.colorOwners[color]
+        delete this.playerColors[this.colorOwners[color]]
     }
 }

@@ -1,8 +1,8 @@
 const LudoColors = {
     red: "red",
     yellow: "yellow",
-    green: "green",
-    blue: "blue"
+    blue: "blue",
+    green: "green"
 }
 
 const LudoUnlockPositions = {
@@ -26,29 +26,29 @@ const LudoStarPositions = [
 const LudoEntrypoints = {
     red:    1,
     yellow: 14,
-    green:  27,
-    blue:   40
+    blue:   27,
+    green:  40
 }
 
 const LudoWinningPositions = {
     red:    105,
     yellow: 111,
-    green:  117,
-    blue:   123
+    blue:   117,
+    green:  123
 }
 
 const LudoWinningHallPositions = {
     red:    [100, 101, 102, 103, 104],
     yellow: [106, 107, 108, 109, 110],
-    green:  [118, 119, 120, 121, 122],
-    blue:   [112, 113, 114, 115, 116]
+    blue:   [112, 113, 114, 115, 116],
+    green:  [118, 119, 120, 121, 122]
 }
 
 const LudoHomePositions = {
     red:    [150, 151, 152, 153],
     yellow: [154, 155, 156, 157],
-    green:  [158, 159, 160, 161],
-    blue:   [162, 163, 164, 165]
+    blue:   [158, 159, 160, 161],
+    green:  [162, 163, 164, 165]
 }
 
 const LudoCoords = [

@@ -1,15 +1,4 @@
 class LudoPiece {
-
-    // public name: string;
-    // public color: LudoColors;
-    // public board: LudoBoard;
-    // public position!: number;
-    // public isLocked: boolean;
-    // public reachedGoal: boolean;
-    // public playerId: string;
-    // public isSafe: boolean;
-    // public wasLastKill: boolean;
-
     constructor(color, name, playerId, board) {
         this.name = name
         this.color = color
@@ -34,15 +23,18 @@ class LudoPiece {
 
         for (let i = 1; i != num + 1; i++) {
             if (this.position === 52 && i - 1 === num) this.position = 52
-            else if (this.position === 52) this.position = 0
+            else if (this.position === 52) this.position = 1
+            if(LudoEntrypoints[this.color] === (this.position) && i - 1 != num) this.position = LudoWinningHallPositions[this.color][0]
+
             this.position += 1
+            
+            // check if we reached goal
+            this.reachedGoal = LudoWinningPositions[this.color] === this.position
+            if(this.reachedGoal) return
         }
 
         // check if we're safe
-        this.isSafe = LudoStarPositions.includes(this.position) ? true : false
-
-        // check if we reached goal
-        this.reachedGoal = LudoWinningPositions[this.color] === this.position ? true : false
+        this.isSafe = LudoStarPositions.includes(this.position)
 
         // check who's sittin on the tile, kill if enemy
         let tilePieces = this.board.getPiecesOnPosition(this.position)
@@ -60,8 +52,11 @@ class LudoPiece {
     }
 
     kill(target) {
+        if(target.isSafe) return;
         target.lock()
         this.wasLastKill = true
+        this.board.currentTurn.availableTurns++;
+        this.board.rolledSixes = 0;
     }
 
     lock() {

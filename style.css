@@ -11,17 +11,17 @@
 :root {
   /* Primary Colors */
 
-  --red: #ff000080;
-  --green: #00ff0080;
-  --blue: #0000ff80;
-  --yellow: #ffff0080;
+  --red: rgba(255, 0, 0, 0.5);
+  --yellow: rgba(255, 255, 0, 0.5);
+  --blue: rgba(0, 0, 255, 0.5);
+  --green: rgba(0, 255, 0, 0.5);
 }
 
 body {
   width: 100vw;
   height: 100vh;
   background-image: url("background.jpg");
-  background-color: rgb(255, 200, 240);
+  background-color: rgb(140, 140, 140);
   background-size: cover;
   background-blend-mode: multiply;
   overflow: hidden;
@@ -229,35 +229,85 @@ body {
   position: relative;
 }
 
+.center .tri1 a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 35px;
+  text-shadow: 0px 0px 7.5px black;
+  /* box-shadow: 0px 0px 10px 2px black; */
+}
+
+.center .tri2 a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 65px;
+  text-shadow: 0px 0px 7.5px black;
+  /* box-shadow: 0px 0px 10px 2px black; */
+}
+
+.center .tri3 a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -15px;
+  left: 50px;
+  text-shadow: 0px 0px 7.5px black;
+  /* box-shadow: 0px 0px 10px 2px black; */
+}
+
+.center .tri4 a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -15px;
+  right: 50px;
+  text-shadow: 0px 0px 7.5px black;
+  /* box-shadow: 0px 0px 10px 2px black; */
+}
+
 .center .tri1 {
-  border-bottom: 90px solid var(--red);
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-bottom: 90px solid rgba(255, 0, 0, 0.5);
   border-right: 90px solid transparent;
   border-left: 90px solid transparent;
-  position: absolute;
   bottom: 0px;
 }
 
 .center .tri2 {
-  border-top: 90px solid var(--blue);
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-top: 90px solid rgba(0, 0, 255, 0.5);
   border-right: 90px solid transparent;
   border-left: 90px solid transparent;
-  position: absolute;
   top: 0px;
 }
 
 .center .tri3 {
-  border-right: 90px solid var(--green);
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-right: 90px solid rgba(0, 255, 0, 0.5);
   border-top: 90px solid transparent;
   border-bottom: 90px solid transparent;
-  position: absolute;
   right: 0px;
 }
 
 .center .tri4 {
-  border-left: 90px solid var(--yellow);
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border-left: 90px solid rgba(255, 255, 0, 0.5);
   border-bottom: 90px solid transparent;
   border-top: 90px solid transparent;
-  position: absolute;
   left: 0px;
 }
 
@@ -280,9 +330,21 @@ body {
   border-top-right-radius: 0px;
 }
 
+#player1 *::selection {
+  background-color: rgba(255, 100, 100, 0.15);
+  color: rgba(255, 50, 50);
+  text-shadow: 0px 0px 2px black;
+}
+
 #player2 {
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
+}
+
+#player2 *::selection {
+  background-color: rgba(255, 255, 100, 0.15);
+  color: rgba(255, 255, 50);
+  text-shadow: 0px 0px 2px black;
 }
 
 #player3 {
@@ -290,11 +352,22 @@ body {
   border-top-left-radius: 0px;
 }
 
+#player3 *::selection {
+  background-color: rgba(100, 100, 255, 0.15);
+  color: rgba(50, 50, 255);
+  text-shadow: 0px 0px 2px black;
+}
+
 #player4 {
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
 }
 
+#player4 *::selection {
+  background-color: rgba(100, 255, 100, 0.15);
+  color: rgba(50, 255, 50);
+  text-shadow: 0px 0px 2px black;
+}
 
 .hero {
   display: flex;
@@ -315,10 +388,15 @@ body {
   transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 350ms;
 }
 
+.player button {
+  transition: box-shadow ease-in-out 250ms;
+}
+
 .player h1 {
   text-align: center;
   font-family: "Karla", sans-serif;
   font-weight: 700;
+  color: black;
 }
 
 .player hr {
@@ -357,11 +435,28 @@ body {
   border-radius: 10px;
   box-shadow: inset 0px 0px 10px 5px #00000033;
   cursor: pointer;
+  transition: box-shadow ease-in-out 250ms;
 }
 
 .pawns button a {
   color: #ffffffa0;
-  transition: all ease-in-out 250ms;
+  transition: transform ease-in-out 250ms, color ease-in-out 250ms;
+}
+
+#player1 button:hover {
+  box-shadow: inset 0px 0px 10px 5px rgba(255, 0, 0, 0.25);
+}
+
+#player2 button:hover {
+  box-shadow: inset 0px 0px 10px 5px rgba(255, 255, 0, 0.25);
+}
+
+#player3 button:hover {
+  box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 255, 0.25);
+}
+
+#player4 button:hover {
+  box-shadow: inset 0px 0px 10px 5px rgba(0, 255, 0, 0.25);
 }
 
 .dice {
@@ -378,7 +473,8 @@ body {
 
 .dice a {
   font-size: 100px;
-  color: #ffffffc0;
+  color: rgba(255, 255, 255, 0.75);
+  transition: transform ease-in-out 250ms;
 }
 
 .pieces {
@@ -402,38 +498,51 @@ body {
 }
 
 #player1 .pieces button a {
-  color: #df0000b0;
-  filter: drop-shadow(0px 0px 2px #df0000b0);
+  color: rgba(223, 0, 0, 0.69);
+  filter: drop-shadow(0px 0px 2px rgba(223, 0, 0, 0.69));
 }
 
 #player2 .pieces button a {
-  color: #cfcf00b0;
-  filter: drop-shadow(0px 0px 2px #cfcf00b0) 532;
+  color: rgba(207, 207, 0, 0.69);
+  filter: drop-shadow(0px 0px 2px rgba(207, 207, 0, 0.69)) 532;
 }
 
 #player3 .pieces button a {
-  color: #0000cfb0;
-  filter: drop-shadow(0px 0px 2px #0000cfb0);
+  color: rgba(0, 0, 207, 0.69);
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 207, 0.69));
 }
 
 #player4 .pieces button a {
-  color: #00cf00b0;
-  filter: drop-shadow(0px 0px 2px #00cf00b0);
+  color: rgba(0, 207, 0, 0.69);
+  filter: drop-shadow(0px 0px 2px rgba(0, 207, 0, 0.69));
 }
 
 .pawns button:hover a {
-  transform: scale(1.2);
+  transform: scale(1.15);
+}
+
+.dice:hover a {
+  transform: scale(1.1);
 }
 
 .blink a {
-  animation-name: blinking;
-  animation-duration: 1s;
+  animation-name: diceBlinking;
+  animation-duration: 0.75s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   transition: all ease-in-out 500ms;
 }
 
-@keyframes blinking {
+#blink {
+  animation-name: pawnBlinking;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  transition: all ease-in-out 500ms;
+  z-index: 100;
+}
+
+@keyframes diceBlinking {
   0% {
     transform: scale(1);
   }
@@ -443,4 +552,20 @@ body {
   100% {
     transform: scale(1);
   }
+}
+
+@keyframes pawnBlinking {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pxls a {
+  text-shadow: 0px 0px 1.5px black;
 }
