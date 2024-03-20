@@ -77,7 +77,7 @@ class LudoBoard {
         this.currentTurn.availableTurns--;
         if(roll == 6) {
             this.currentTurn.availableTurns++;
-            //this.rolledSixes++;
+            this.rolledSixes++;
         }
 
         if(this.rolledSixes === 3) {
