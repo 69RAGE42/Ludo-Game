@@ -172,9 +172,9 @@ document.querySelector(".controller button").addEventListener("click", () => {
   LB = new LudoBoard()
   LB.init([
     { playerId: 1, color: "red" },
-    { playerId: 2, color: "yellow" },
+    // { playerId: 2, color: "yellow" },
     { playerId: 3, color: "blue" },
-    { playerId: 4, color: "green" }
+    // { playerId: 4, color: "green" }
   ])
 
   document.querySelector("#player" + LB.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[LB.currentTurn.playerId - 1];
@@ -182,6 +182,7 @@ document.querySelector(".controller button").addEventListener("click", () => {
   // Dice animation start (ends in dice click event)
   document.querySelector("#dice-" + LB.currentTurn.color).className = "dice blink";
   document.querySelector("#dice-" + LB.currentTurn.color + " a").style.color = RGBDiceColors[LB.currentTurn.playerId - 1];
+  document.querySelectorAll(".player-info").forEach(element => { element.style.display = "flex"; })
 
   gameStarted = true;
   updatePawnPositions()
@@ -396,3 +397,35 @@ function updateTurnsAndRolls(playerId) {
 function gameOver() {
 
 }
+
+// Work In Progress // Do not Disturb
+
+let activePopUps = [false, false, false, false];
+
+document.querySelectorAll(".player-info").forEach(popUps => {
+  popUps.addEventListener("click", () => {
+    let index = popUps.id.substring(11, 12);
+    if(activePopUps[index - 1] == false) {
+      for(let i = 1; i <= 4; i++) {
+        document.querySelector("#pop-up" + i).style.display = "none";
+        document.querySelector("#cross-" + i).style.display = "none";
+      }
+      document.querySelector("#pop-up" + index).style.display = "flex";
+      document.querySelector("#cross-" + index).style.display = "flex";
+      activePopUps[index - 1] = true;
+    } else {
+      document.querySelector("#pop-up" + index).style.display = "none";
+      document.querySelector("#cross-" + index).style.display = "none";
+      activePopUps[index - 1] = false;
+    }
+  })
+})
+
+document.querySelectorAll(".cross-x").forEach(cross => {
+  cross.addEventListener("click", () => {
+    let index = cross.id.substring(6, 7);
+    document.querySelector("#pop-up" + index).style.display = "none";
+    document.querySelector("#cross-" + index).style.display = "none";
+    activePopUps[index - 1] = false;
+  })
+})

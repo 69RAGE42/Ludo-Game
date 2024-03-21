@@ -15,6 +15,7 @@
       referrerpolicy="no-referrer"
     />
   </head>
+  <!-- these html are familiar-->
   <body>
     <div class="controller">
       <div class="center">
@@ -172,13 +173,24 @@
     <div class="players">
       <div class="hero">
         <div class="player" id="player1">
+          <button class="player-info" id="player-info1" style="right: 20px;">
+            <a class="fa-solid fa-info" id="info1"></a>
+          </button>
           <h1>Player 1 (Red)</h1>
           <hr />
           <div class="pawns">
-            <button class="pawn1" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
-            <button class="pawn2" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
-            <button class="pawn3" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
-            <button class="pawn4" id="pawn-red"><a class="fa-solid fa-heart"></a></button>
+            <button class="pawn1" id="pawn-red">
+              <a class="fa-solid fa-heart"></a>
+            </button>
+            <button class="pawn2" id="pawn-red">
+              <a class="fa-solid fa-heart"></a>
+            </button>
+            <button class="pawn3" id="pawn-red">
+              <a class="fa-solid fa-heart"></a>
+            </button>
+            <button class="pawn4" id="pawn-red">
+              <a class="fa-solid fa-heart"></a>
+            </button>
           </div>
           <button class="dice" id="dice-red" style="left: 185px">
             <a class="fa-solid fa-square"></a>
@@ -208,13 +220,24 @@
           </div>
         </div>
         <div class="player" id="player4">
+          <button class="player-info" id="player-info4">
+            <a class="fa-solid fa-info" id="info4"></a>
+          </button>
           <h1>Player 4 (Green)</h1>
           <hr />
           <div class="pawns">
-            <button class="pawn1" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button class="pawn2" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button class="pawn3" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
-            <button class="pawn4" id="pawn-green"><a class="fa-solid fa-puzzle-piece"></a></button>
+            <button class="pawn1" id="pawn-green">
+              <a class="fa-solid fa-puzzle-piece"></a>
+            </button>
+            <button class="pawn2" id="pawn-green">
+              <a class="fa-solid fa-puzzle-piece"></a>
+            </button>
+            <button class="pawn3" id="pawn-green">
+              <a class="fa-solid fa-puzzle-piece"></a>
+            </button>
+            <button class="pawn4" id="pawn-green">
+              <a class="fa-solid fa-puzzle-piece"></a>
+            </button>
           </div>
           <button class="dice" id="dice-green" style="left: 0px">
             <a class="fa-solid fa-square"></a>
@@ -246,13 +269,24 @@
       </div>
       <div class="hero" style="flex-direction: row-reverse">
         <div class="player" id="player3">
+          <button class="player-info" id="player-info3">
+            <a class="fa-solid fa-info" id="info3"></a>
+          </button>
           <h1>Player 3 (Blue)</h1>
           <hr />
           <div class="pawns">
-            <button class="pawn1" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
-            <button class="pawn2" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
-            <button class="pawn3" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
-            <button class="pawn4" id="pawn-blue"><a class="fa-regular fa-paper-plane"></a></button>
+            <button class="pawn1" id="pawn-blue">
+              <a class="fa-regular fa-paper-plane"></a>
+            </button>
+            <button class="pawn2" id="pawn-blue">
+              <a class="fa-regular fa-paper-plane"></a>
+            </button>
+            <button class="pawn3" id="pawn-blue">
+              <a class="fa-regular fa-paper-plane"></a>
+            </button>
+            <button class="pawn4" id="pawn-blue">
+              <a class="fa-regular fa-paper-plane"></a>
+            </button>
           </div>
           <button class="dice" id="dice-blue" style="left: 0px">
             <a class="fa-solid fa-square"></a>
@@ -282,13 +316,24 @@
           </div>
         </div>
         <div class="player" id="player2">
+          <button class="player-info" id="player-info2" style="right: 20px;">
+            <a class="fa-solid fa-info" id="info2"></a>
+          </button>
           <h1>Player 2 (Yellow)</h1>
           <hr />
           <div class="pawns">
-            <button class="pawn1" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
-            <button class="pawn2" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
-            <button class="pawn3" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
-            <button class="pawn4" id="pawn-yellow"><a class="fa-solid fa-crown"></a></button>
+            <button class="pawn1" id="pawn-yellow">
+              <a class="fa-solid fa-crown"></a>
+            </button>
+            <button class="pawn2" id="pawn-yellow">
+              <a class="fa-solid fa-crown"></a>
+            </button>
+            <button class="pawn3" id="pawn-yellow">
+              <a class="fa-solid fa-crown"></a>
+            </button>
+            <button class="pawn4" id="pawn-yellow">
+              <a class="fa-solid fa-crown"></a>
+            </button>
           </div>
           <button class="dice" id="dice-yellow" style="left: 185px">
             <a class="fa-solid fa-square"></a>
@@ -317,6 +362,28 @@
             </button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="pop-up">
+      <div class="info-container" id="pop-up1">
+        <div class="cross-x" id="cross-1">
+          <a class="fa-solid fa-xmark"></a>
+        </div></div>
+      <div class="info-container" id="pop-up2">
+        <div class="cross-x" id="cross-2">
+          <a class="fa-solid fa-xmark"></a>
+        </div></div>
+      <div class="info-container" id="pop-up3">
+        <div class="cross-x" id="cross-3">
+          <a class="fa-solid fa-xmark"></a>
+        </div></div>
+      <div class="info-container" id="pop-up4">
+        <div class="cross-x" id="cross-4">
+          <a class="fa-solid fa-xmark"></a>
+        </div></div>
+      <div class="win-container">
+        <div class="cross-x" id="cross-win"></div>
       </div>
     </div>
 
