@@ -40,7 +40,7 @@ let tokenShapes = ["fa-solid fa-heart", "fa-regular fa-sun", "fa-regular fa-moon
 
 let RGBPlayerColors = ["rgba(255, 50, 50, 0.15)", "rgba(255, 255, 50, 0.15)", "rgba(50, 50, 255, 0.15)", "rgba(50, 255, 50, 0.15)"]
 let RGBDiceColors = ["rgba(223, 0, 0, 0.69)", "rgba(207, 207, 0, 0.69)", "rgba(0, 0, 207, 0.69)", "rgba(0, 207, 0, 0.69)"]
-let RGBPopUpColors = ["rgba(150, 50, 50, 0.3)", "rgba(150, 150, 50, 0.3)", "rgba(50, 50, 150, 0.3)", "rgba(50, 150, 50, 0.3)"]
+let RGBPopUpColors = ["rgba(200, 150, 150, 0.3)", "rgba(200, 200, 150, 0.3)", "rgba(150, 150, 200, 0.3)", "rgba(150, 200, 150, 0.3)"]
 
 let pawnProperties = {
   "red": {
@@ -48,7 +48,7 @@ let pawnProperties = {
     classList: "fa-solid fa-heart",
     style: {
       color: "#df0000b0",
-      filter: "drop-shadow(0px 0px 15px #ff0000ff)"
+      filter: "drop-shadow(0px 0px 12.5px #000000ff)"
     }
   },
   "yellow": {
@@ -56,7 +56,7 @@ let pawnProperties = {
     classList: "fa-solid fa-crown",
     style: {
       color: "#cfcf00b0",
-      filter: "drop-shadow(0px 0px 15px #ffff00ff)"
+      filter: "drop-shadow(0px 0px 12.5px #000000ff)"
     }
   },
   "blue": {
@@ -64,7 +64,7 @@ let pawnProperties = {
     classList: "fa-regular fa-paper-plane",
     style: {
       color: "#0000cfb0",
-      filter: "drop-shadow(0px 0px 15px #0000ffff)"
+      filter: "drop-shadow(0px 0px 12.5px #000000ff)"
     }
   },
   "green": {
@@ -72,7 +72,7 @@ let pawnProperties = {
     classList: "fa-solid fa-puzzle-piece",
     style: {
       color: "#00cf00b0",
-      filter: "drop-shadow(0px 0px 15px #00ff00ff)"
+      filter: "drop-shadow(0px 0px 12.5px #000000ff)"
     }
   }
 }

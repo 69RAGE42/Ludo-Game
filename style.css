@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Karla", sans-serif;
+  font-family: "Karla", system-ui;
   font-size: 32px;
 }
 
@@ -152,6 +152,8 @@ body {
 
 .pxls a {
   opacity: 1;
+  text-shadow: 0px 0px 5px black;
+  filter: drop-shadow(0px 0px 10px black);
 }
 
 #path2 #pxl100,
@@ -365,8 +367,6 @@ body {
   color: rgba(50, 255, 50);
   text-shadow: 0px 0px 2px black;
 }
-
-
 
 .hero {
   display: flex;
@@ -723,8 +723,10 @@ body {
   position: absolute;
   top: 20px;
   font-size: 1.75rem;
-  letter-spacing: 1.25px;
-  word-spacing: 7.5px;
+  font-family: "Barlow";
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  word-spacing: 12.5px;
 }
 
 .info-container a {
@@ -765,9 +767,15 @@ body {
 }
 
 .stats-matrix {
+  padding: 5px 30px;
   width: 350px;
   height: 100px;
-  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+  font-family: "Barlow";
+  font-size: 1.25rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .counter-holder {
