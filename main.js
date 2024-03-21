@@ -76,7 +76,7 @@ let pawnProperties = {
     }
   }
 }
-
+// test
 function checkForStars(element) {
   var pxl = document.querySelector(element + " a");
   if (pxl.className == "fa-regular fa-star") {
