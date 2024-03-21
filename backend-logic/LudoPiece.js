@@ -23,14 +23,18 @@ class LudoPiece {
 
         for (let i = 1; i != num + 1; i++) {
             if (this.position === 52 && i - 1 === num) this.position = 52
-            else if (this.position === 52) this.position = 1
-            if(LudoEntrypoints[this.color] === (this.position) && i - 1 != num) this.position = LudoWinningHallPositions[this.color][0]
+            else if (this.position === 52) this.position = 0
+
+            if (LudoEntrypoints[this.color] === this.position && i - 1 != num) {
+                this.position = LudoWinningHallPositions[this.color][0]
+                continue
+            }
 
             this.position += 1
-            
+
             // check if we reached goal
             this.reachedGoal = LudoWinningPositions[this.color] === this.position
-            if(this.reachedGoal) return
+            if (this.reachedGoal) return
         }
 
         // check if we're safe
@@ -52,7 +56,7 @@ class LudoPiece {
     }
 
     kill(target) {
-        if(target.isSafe) return;
+        if (target.isSafe) return;
         target.lock()
         this.wasLastKill = true
         this.board.currentTurn.availableTurns++;
@@ -73,7 +77,7 @@ class LudoPiece {
         if (!this.position) return;
 
         if (this.isLocked && num != 6) return false
-        if ((this.position > 100 && this.position < 150) && ((LudoWinningPositions[this.color] - this.position) < num)) return false
+        if ((this.position > 99 && this.position < 150) && ((this.position + num) > LudoWinningPositions[this.color])) return false
         return true
     }
 }

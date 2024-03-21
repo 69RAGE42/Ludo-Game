@@ -1,392 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ludo Game | @RAGE</title>
-    <link rel="stylesheet" href="style.css" />
 
-    <!-- Font Awesome Linked -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <!-- these html are familiar-->
-  <body>
-    <div class="controller">
-      <div class="center">
-        <span class="tri1" id="pxl105">
-          <a class=""></a>
-        </span>
-        <span class="tri2" id="pxl117">
-          <a class=""></a>
-        </span>
-        <span class="tri3" id="pxl123">
-          <a class=""></a>
-        </span>
-        <span class="tri4" id="pxl111">
-          <a class=""></a>
-        </span>
-      </div>
-      <button>START</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ludo Game | @RAGE</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Font Awesome Linked -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<!-- these html are familiar-->
+
+<body>
+  <div class="controller">
+    <div class="center">
+      <span class="tri1" id="pxl105">
+        <a class=""></a>
+      </span>
+      <span class="tri2" id="pxl117">
+        <a class=""></a>
+      </span>
+      <span class="tri3" id="pxl123">
+        <a class=""></a>
+      </span>
+      <span class="tri4" id="pxl111">
+        <a class=""></a>
+      </span>
     </div>
+    <button>START</button>
+  </div>
 
-    <div class="container">
-      <div class="ludo">
-        <div class="upper-room">
-          <div class="rooms" id="room2">
-            <div class="token-room2 token13" id="pxl154"><a></a></div>
-            <div class="token-room2 token14" id="pxl155"><a></a></div>
-            <div class="token-room2 token15" id="pxl157"><a></a></div>
-            <div class="token-room2 token16" id="pxl156"><a></a></div>
-          </div>
-          <div class="path-clm" id="path9">
-            <div class="pxls" id="pxl026"><a></a></div>
-            <div class="pxls" id="pxl025"><a></a></div>
-            <div class="pxls" id="pxl024"><a></a></div>
-            <div class="pxls" id="pxl023"><a></a></div>
-            <div class="pxls" id="pxl022"><a></a></div>
-            <div class="pxls" id="pxl021"><a></a></div>
-          </div>
-          <div class="path-clm" id="path8">
-            <div class="pxls" id="pxl027"><a></a></div>
-            <div class="pxls" id="pxl112"><a></a></div>
-            <div class="pxls" id="pxl113"><a></a></div>
-            <div class="pxls" id="pxl114"><a></a></div>
-            <div class="pxls" id="pxl115"><a></a></div>
-            <div class="pxls" id="pxl116"><a></a></div>
-          </div>
-          <div class="path-clm" id="path7">
-            <div class="pxls" id="pxl028"><a></a></div>
-            <div class="pxls" id="pxl029"><a></a></div>
-            <div class="pxls" id="pxl030"><a></a></div>
-            <div class="pxls" id="pxl031"><a></a></div>
-            <div class="pxls" id="pxl032"><a></a></div>
-            <div class="pxls" id="pxl033"><a></a></div>
-          </div>
-          <div class="rooms" id="room3">
-            <div class="token-room3 token09" id="pxl158"><a></a></div>
-            <div class="token-room3 token10" id="pxl159"><a></a></div>
-            <div class="token-room3 token11" id="pxl161"><a></a></div>
-            <div class="token-room3 token12" id="pxl160"><a></a></div>
-          </div>
+  <div class="container">
+    <div class="ludo">
+      <div class="upper-room">
+        <div class="rooms" id="room2">
+          <div class="token-room2 token13" id="pxl154"><a></a></div>
+          <div class="token-room2 token14" id="pxl155"><a></a></div>
+          <div class="token-room2 token15" id="pxl157"><a></a></div>
+          <div class="token-room2 token16" id="pxl156"><a></a></div>
         </div>
-        <div class="temp">
-          <div class="path-row" id="path10">
-            <div class="pxls" id="pxl015"><a></a></div>
-            <div class="pxls" id="pxl016"><a></a></div>
-            <div class="pxls" id="pxl017"><a></a></div>
-            <div class="pxls" id="pxl018"><a></a></div>
-            <div class="pxls" id="pxl019"><a></a></div>
-            <div class="pxls" id="pxl020"><a></a></div>
-          </div>
-          <div class="path-row" id="path6">
-            <div class="pxls" id="pxl034"><a></a></div>
-            <div class="pxls" id="pxl035"><a></a></div>
-            <div class="pxls" id="pxl036"><a></a></div>
-            <div class="pxls" id="pxl037"><a></a></div>
-            <div class="pxls" id="pxl038"><a></a></div>
-            <div class="pxls" id="pxl039"><a></a></div>
-          </div>
+        <div class="path-clm" id="path9">
+          <div class="pxls" id="pxl026"><a></a></div>
+          <div class="pxls" id="pxl025"><a></a></div>
+          <div class="pxls" id="pxl024"><a></a></div>
+          <div class="pxls" id="pxl023"><a></a></div>
+          <div class="pxls" id="pxl022"><a></a></div>
+          <div class="pxls" id="pxl021"><a></a></div>
         </div>
-        <div class="temp">
-          <div class="path-row" id="path11">
-            <div class="pxls" id="pxl014"><a></a></div>
-            <div class="pxls" id="pxl106"><a></a></div>
-            <div class="pxls" id="pxl107"><a></a></div>
-            <div class="pxls" id="pxl108"><a></a></div>
-            <div class="pxls" id="pxl109"><a></a></div>
-            <div class="pxls" id="pxl110"><a></a></div>
-          </div>
-          <div class="path-row" id="path5">
-            <div class="pxls" id="pxl122"><a></a></div>
-            <div class="pxls" id="pxl121"><a></a></div>
-            <div class="pxls" id="pxl120"><a></a></div>
-            <div class="pxls" id="pxl119"><a></a></div>
-            <div class="pxls" id="pxl118"><a></a></div>
-            <div class="pxls" id="pxl040"><a></a></div>
-          </div>
+        <div class="path-clm" id="path8">
+          <div class="pxls" id="pxl027"><a></a></div>
+          <div class="pxls" id="pxl112"><a></a></div>
+          <div class="pxls" id="pxl113"><a></a></div>
+          <div class="pxls" id="pxl114"><a></a></div>
+          <div class="pxls" id="pxl115"><a></a></div>
+          <div class="pxls" id="pxl116"><a></a></div>
         </div>
-        <div class="temp">
-          <div class="path-row" id="path12">
-            <div class="pxls" id="pxl013"><a></a></div>
-            <div class="pxls" id="pxl012"><a></a></div>
-            <div class="pxls" id="pxl011"><a></a></div>
-            <div class="pxls" id="pxl010"><a></a></div>
-            <div class="pxls" id="pxl009"><a></a></div>
-            <div class="pxls" id="pxl008"><a></a></div>
-          </div>
-          <div class="path-row" id="path4">
-            <div class="pxls" id="pxl046"><a></a></div>
-            <div class="pxls" id="pxl045"><a></a></div>
-            <div class="pxls" id="pxl044"><a></a></div>
-            <div class="pxls" id="pxl043"><a></a></div>
-            <div class="pxls" id="pxl042"><a></a></div>
-            <div class="pxls" id="pxl041"><a></a></div>
-          </div>
+        <div class="path-clm" id="path7">
+          <div class="pxls" id="pxl028"><a></a></div>
+          <div class="pxls" id="pxl029"><a></a></div>
+          <div class="pxls" id="pxl030"><a></a></div>
+          <div class="pxls" id="pxl031"><a></a></div>
+          <div class="pxls" id="pxl032"><a></a></div>
+          <div class="pxls" id="pxl033"><a></a></div>
         </div>
-        <div class="lower-room">
-          <div class="rooms" id="room1">
-            <div class="token-room1 token01" id="pxl150"><a></a></div>
-            <div class="token-room1 token02" id="pxl151"><a></a></div>
-            <div class="token-room1 token03" id="pxl153"><a></a></div>
-            <div class="token-room1 token04" id="pxl152"><a></a></div>
-          </div>
-          <div class="path-clm" id="path1">
-            <div class="pxls" id="pxl007"><a></a></div>
-            <div class="pxls" id="pxl006"><a></a></div>
-            <div class="pxls" id="pxl005"><a></a></div>
-            <div class="pxls" id="pxl004"><a></a></div>
-            <div class="pxls" id="pxl003"><a></a></div>
-            <div class="pxls" id="pxl002"><a></a></div>
-          </div>
-          <div class="path-clm" id="path2">
-            <div class="pxls" id="pxl104"><a></a></div>
-            <div class="pxls" id="pxl103"><a></a></div>
-            <div class="pxls" id="pxl102"><a></a></div>
-            <div class="pxls" id="pxl101"><a></a></div>
-            <div class="pxls" id="pxl100"><a></a></div>
-            <div class="pxls" id="pxl001"><a></a></div>
-          </div>
-          <div class="path-clm" id="path3">
-            <div class="pxls" id="pxl047"><a></a></div>
-            <div class="pxls" id="pxl048"><a></a></div>
-            <div class="pxls" id="pxl049"><a></a></div>
-            <div class="pxls" id="pxl050"><a></a></div>
-            <div class="pxls" id="pxl051"><a></a></div>
-            <div class="pxls" id="pxl052"><a></a></div>
-          </div>
-          <div class="rooms" id="room4">
-            <div class="token-room4 token05" id="pxl162"><a></a></div>
-            <div class="token-room4 token06" id="pxl163"><a></a></div>
-            <div class="token-room4 token07" id="pxl165"><a></a></div>
-            <div class="token-room4 token08" id="pxl164"><a></a></div>
-          </div>
+        <div class="rooms" id="room3">
+          <div class="token-room3 token09" id="pxl158"><a></a></div>
+          <div class="token-room3 token10" id="pxl159"><a></a></div>
+          <div class="token-room3 token11" id="pxl161"><a></a></div>
+          <div class="token-room3 token12" id="pxl160"><a></a></div>
+        </div>
+      </div>
+      <div class="temp">
+        <div class="path-row" id="path10">
+          <div class="pxls" id="pxl015"><a></a></div>
+          <div class="pxls" id="pxl016"><a></a></div>
+          <div class="pxls" id="pxl017"><a></a></div>
+          <div class="pxls" id="pxl018"><a></a></div>
+          <div class="pxls" id="pxl019"><a></a></div>
+          <div class="pxls" id="pxl020"><a></a></div>
+        </div>
+        <div class="path-row" id="path6">
+          <div class="pxls" id="pxl034"><a></a></div>
+          <div class="pxls" id="pxl035"><a></a></div>
+          <div class="pxls" id="pxl036"><a></a></div>
+          <div class="pxls" id="pxl037"><a></a></div>
+          <div class="pxls" id="pxl038"><a></a></div>
+          <div class="pxls" id="pxl039"><a></a></div>
+        </div>
+      </div>
+      <div class="temp">
+        <div class="path-row" id="path11">
+          <div class="pxls" id="pxl014"><a></a></div>
+          <div class="pxls" id="pxl106"><a></a></div>
+          <div class="pxls" id="pxl107"><a></a></div>
+          <div class="pxls" id="pxl108"><a></a></div>
+          <div class="pxls" id="pxl109"><a></a></div>
+          <div class="pxls" id="pxl110"><a></a></div>
+        </div>
+        <div class="path-row" id="path5">
+          <div class="pxls" id="pxl122"><a></a></div>
+          <div class="pxls" id="pxl121"><a></a></div>
+          <div class="pxls" id="pxl120"><a></a></div>
+          <div class="pxls" id="pxl119"><a></a></div>
+          <div class="pxls" id="pxl118"><a></a></div>
+          <div class="pxls" id="pxl040"><a></a></div>
+        </div>
+      </div>
+      <div class="temp">
+        <div class="path-row" id="path12">
+          <div class="pxls" id="pxl013"><a></a></div>
+          <div class="pxls" id="pxl012"><a></a></div>
+          <div class="pxls" id="pxl011"><a></a></div>
+          <div class="pxls" id="pxl010"><a></a></div>
+          <div class="pxls" id="pxl009"><a></a></div>
+          <div class="pxls" id="pxl008"><a></a></div>
+        </div>
+        <div class="path-row" id="path4">
+          <div class="pxls" id="pxl046"><a></a></div>
+          <div class="pxls" id="pxl045"><a></a></div>
+          <div class="pxls" id="pxl044"><a></a></div>
+          <div class="pxls" id="pxl043"><a></a></div>
+          <div class="pxls" id="pxl042"><a></a></div>
+          <div class="pxls" id="pxl041"><a></a></div>
+        </div>
+      </div>
+      <div class="lower-room">
+        <div class="rooms" id="room1">
+          <div class="token-room1 token01" id="pxl150"><a></a></div>
+          <div class="token-room1 token02" id="pxl151"><a></a></div>
+          <div class="token-room1 token03" id="pxl153"><a></a></div>
+          <div class="token-room1 token04" id="pxl152"><a></a></div>
+        </div>
+        <div class="path-clm" id="path1">
+          <div class="pxls" id="pxl007"><a></a></div>
+          <div class="pxls" id="pxl006"><a></a></div>
+          <div class="pxls" id="pxl005"><a></a></div>
+          <div class="pxls" id="pxl004"><a></a></div>
+          <div class="pxls" id="pxl003"><a></a></div>
+          <div class="pxls" id="pxl002"><a></a></div>
+        </div>
+        <div class="path-clm" id="path2">
+          <div class="pxls" id="pxl104"><a></a></div>
+          <div class="pxls" id="pxl103"><a></a></div>
+          <div class="pxls" id="pxl102"><a></a></div>
+          <div class="pxls" id="pxl101"><a></a></div>
+          <div class="pxls" id="pxl100"><a></a></div>
+          <div class="pxls" id="pxl001"><a></a></div>
+        </div>
+        <div class="path-clm" id="path3">
+          <div class="pxls" id="pxl047"><a></a></div>
+          <div class="pxls" id="pxl048"><a></a></div>
+          <div class="pxls" id="pxl049"><a></a></div>
+          <div class="pxls" id="pxl050"><a></a></div>
+          <div class="pxls" id="pxl051"><a></a></div>
+          <div class="pxls" id="pxl052"><a></a></div>
+        </div>
+        <div class="rooms" id="room4">
+          <div class="token-room4 token05" id="pxl162"><a></a></div>
+          <div class="token-room4 token06" id="pxl163"><a></a></div>
+          <div class="token-room4 token07" id="pxl165"><a></a></div>
+          <div class="token-room4 token08" id="pxl164"><a></a></div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="players">
-      <div class="hero">
-        <div class="player" id="player1">
-          <button class="player-info" id="player-info1" style="right: 20px;">
-            <a class="fa-solid fa-info" id="info1"></a>
+  <div class="players">
+    <div class="hero">
+      <div class="player" id="player1">
+        <button class="player-info" id="player-info1" style="right: 20px;">
+          <a class="fa-solid fa-info" id="info1"></a>
+        </button>
+        <h1>Player 1 (Red)</h1>
+        <hr />
+        <div class="pawns">
+          <button class="pawn1" id="pawn-red">
+            <a class="fa-solid fa-heart"></a>
           </button>
-          <h1>Player 1 (Red)</h1>
-          <hr />
-          <div class="pawns">
-            <button class="pawn1" id="pawn-red">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="pawn2" id="pawn-red">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="pawn3" id="pawn-red">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="pawn4" id="pawn-red">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-          </div>
-          <button class="dice" id="dice-red" style="left: 185px">
-            <a class="fa-solid fa-square"></a>
+          <button class="pawn2" id="pawn-red">
+            <a class="fa-solid fa-heart"></a>
           </button>
-          <div id="texts" style="left: 0px">
-            <h6>Turns : 0 Rolls : 0</h6>
-          </div>
-          <div class="pieces">
-            <button class="piece" id="piece1-red">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="piece" id="piece2-red">
-              <a class="fa-regular fa-sun"></a>
-            </button>
-            <button class="piece" id="piece3-red">
-              <a class="fa-regular fa-moon"></a>
-            </button>
-            <button class="piece" id="piece4-red">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="piece" id="piece5-red">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="piece" id="piece6-red">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-          </div>
+          <button class="pawn3" id="pawn-red">
+            <a class="fa-solid fa-heart"></a>
+          </button>
+          <button class="pawn4" id="pawn-red">
+            <a class="fa-solid fa-heart"></a>
+          </button>
         </div>
-        <div class="player" id="player4">
-          <button class="player-info" id="player-info4">
-            <a class="fa-solid fa-info" id="info4"></a>
+        <button class="dice" id="dice-red" style="left: 185px">
+          <a class="fa-solid fa-square"></a>
+        </button>
+        <div id="texts" style="left: 0px">
+          <h6>Turns : 0 Rolls : 0</h6>
+        </div>
+        <div class="pieces">
+          <button class="piece" id="piece1-red">
+            <a class="fa-solid fa-heart"></a>
           </button>
-          <h1>Player 4 (Green)</h1>
-          <hr />
-          <div class="pawns">
-            <button class="pawn1" id="pawn-green">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="pawn2" id="pawn-green">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="pawn3" id="pawn-green">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="pawn4" id="pawn-green">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-          </div>
-          <button class="dice" id="dice-green" style="left: 0px">
-            <a class="fa-solid fa-square"></a>
+          <button class="piece" id="piece2-red">
+            <a class="fa-regular fa-sun"></a>
           </button>
-          <div id="texts">
-            <h6>Turns : 0 Rolls : 0</h6>
-          </div>
-          <div class="pieces">
-            <button class="piece" id="piece1-green">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="piece" id="piece2-green">
-              <a class="fa-regular fa-sun"></a>
-            </button>
-            <button class="piece" id="piece3-green">
-              <a class="fa-regular fa-moon"></a>
-            </button>
-            <button class="piece" id="piece4-green">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="piece" id="piece5-green">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="piece" id="piece6-green">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-          </div>
+          <button class="piece" id="piece3-red">
+            <a class="fa-regular fa-moon"></a>
+          </button>
+          <button class="piece" id="piece4-red">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="piece" id="piece5-red">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
+          <button class="piece" id="piece6-red">
+            <a class="fa-solid fa-crown"></a>
+          </button>
         </div>
       </div>
-      <div class="hero" style="flex-direction: row-reverse">
-        <div class="player" id="player3">
-          <button class="player-info" id="player-info3">
-            <a class="fa-solid fa-info" id="info3"></a>
+      <div class="player" id="player4">
+        <button class="player-info" id="player-info4">
+          <a class="fa-solid fa-info" id="info4"></a>
+        </button>
+        <h1>Player 4 (Green)</h1>
+        <hr />
+        <div class="pawns">
+          <button class="pawn1" id="pawn-green">
+            <a class="fa-solid fa-puzzle-piece"></a>
           </button>
-          <h1>Player 3 (Blue)</h1>
-          <hr />
-          <div class="pawns">
-            <button class="pawn1" id="pawn-blue">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="pawn2" id="pawn-blue">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="pawn3" id="pawn-blue">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="pawn4" id="pawn-blue">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-          </div>
-          <button class="dice" id="dice-blue" style="left: 0px">
-            <a class="fa-solid fa-square"></a>
+          <button class="pawn2" id="pawn-green">
+            <a class="fa-solid fa-puzzle-piece"></a>
           </button>
-          <div id="texts">
-            <h6>Turns : 0 Rolls : 0</h6>
-          </div>
-          <div class="pieces">
-            <button class="piece" id="piece1-blue">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="piece" id="piece2-blue">
-              <a class="fa-regular fa-sun"></a>
-            </button>
-            <button class="piece" id="piece3-blue">
-              <a class="fa-regular fa-moon"></a>
-            </button>
-            <button class="piece" id="piece4-blue">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="piece" id="piece5-blue">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="piece" id="piece6-blue">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-          </div>
+          <button class="pawn3" id="pawn-green">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
+          <button class="pawn4" id="pawn-green">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
         </div>
-        <div class="player" id="player2">
-          <button class="player-info" id="player-info2" style="right: 20px;">
-            <a class="fa-solid fa-info" id="info2"></a>
+        <button class="dice" id="dice-green" style="left: 0px">
+          <a class="fa-solid fa-square"></a>
+        </button>
+        <div id="texts">
+          <h6>Turns : 0 Rolls : 0</h6>
+        </div>
+        <div class="pieces">
+          <button class="piece" id="piece1-green">
+            <a class="fa-solid fa-heart"></a>
           </button>
-          <h1>Player 2 (Yellow)</h1>
-          <hr />
-          <div class="pawns">
-            <button class="pawn1" id="pawn-yellow">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-            <button class="pawn2" id="pawn-yellow">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-            <button class="pawn3" id="pawn-yellow">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-            <button class="pawn4" id="pawn-yellow">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-          </div>
-          <button class="dice" id="dice-yellow" style="left: 185px">
-            <a class="fa-solid fa-square"></a>
+          <button class="piece" id="piece2-green">
+            <a class="fa-regular fa-sun"></a>
           </button>
-          <div id="texts" style="left: 0px">
-            <h6>Turns : 0 Rolls : 0</h6>
-          </div>
-          <div class="pieces">
-            <button class="piece" id="piece1-yellow">
-              <a class="fa-solid fa-heart"></a>
-            </button>
-            <button class="piece" id="piece2-yellow">
-              <a class="fa-regular fa-sun"></a>
-            </button>
-            <button class="piece" id="piece3-yellow">
-              <a class="fa-regular fa-moon"></a>
-            </button>
-            <button class="piece" id="piece4-yellow">
-              <a class="fa-regular fa-paper-plane"></a>
-            </button>
-            <button class="piece" id="piece5-yellow">
-              <a class="fa-solid fa-puzzle-piece"></a>
-            </button>
-            <button class="piece" id="piece6-yellow">
-              <a class="fa-solid fa-crown"></a>
-            </button>
-          </div>
+          <button class="piece" id="piece3-green">
+            <a class="fa-regular fa-moon"></a>
+          </button>
+          <button class="piece" id="piece4-green">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="piece" id="piece5-green">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
+          <button class="piece" id="piece6-green">
+            <a class="fa-solid fa-crown"></a>
+          </button>
         </div>
       </div>
     </div>
-
-    <div class="pop-up">
-      <div class="info-container" id="pop-up1">
-        <div class="cross-x" id="cross-1">
-          <a class="fa-solid fa-xmark"></a>
-        </div></div>
-      <div class="info-container" id="pop-up2">
-        <div class="cross-x" id="cross-2">
-          <a class="fa-solid fa-xmark"></a>
-        </div></div>
-      <div class="info-container" id="pop-up3">
-        <div class="cross-x" id="cross-3">
-          <a class="fa-solid fa-xmark"></a>
-        </div></div>
-      <div class="info-container" id="pop-up4">
-        <div class="cross-x" id="cross-4">
-          <a class="fa-solid fa-xmark"></a>
-        </div></div>
-      <div class="win-container">
-        <div class="cross-x" id="cross-win"></div>
+    <div class="hero" style="flex-direction: row-reverse">
+      <div class="player" id="player3">
+        <button class="player-info" id="player-info3">
+          <a class="fa-solid fa-info" id="info3"></a>
+        </button>
+        <h1>Player 3 (Blue)</h1>
+        <hr />
+        <div class="pawns">
+          <button class="pawn1" id="pawn-blue">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="pawn2" id="pawn-blue">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="pawn3" id="pawn-blue">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="pawn4" id="pawn-blue">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+        </div>
+        <button class="dice" id="dice-blue" style="left: 0px">
+          <a class="fa-solid fa-square"></a>
+        </button>
+        <div id="texts">
+          <h6>Turns : 0 Rolls : 0</h6>
+        </div>
+        <div class="pieces">
+          <button class="piece" id="piece1-blue">
+            <a class="fa-solid fa-heart"></a>
+          </button>
+          <button class="piece" id="piece2-blue">
+            <a class="fa-regular fa-sun"></a>
+          </button>
+          <button class="piece" id="piece3-blue">
+            <a class="fa-regular fa-moon"></a>
+          </button>
+          <button class="piece" id="piece4-blue">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="piece" id="piece5-blue">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
+          <button class="piece" id="piece6-blue">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+        </div>
+      </div>
+      <div class="player" id="player2">
+        <button class="player-info" id="player-info2" style="right: 20px;">
+          <a class="fa-solid fa-info" id="info2"></a>
+        </button>
+        <h1>Player 2 (Yellow)</h1>
+        <hr />
+        <div class="pawns">
+          <button class="pawn1" id="pawn-yellow">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+          <button class="pawn2" id="pawn-yellow">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+          <button class="pawn3" id="pawn-yellow">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+          <button class="pawn4" id="pawn-yellow">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+        </div>
+        <button class="dice" id="dice-yellow" style="left: 185px">
+          <a class="fa-solid fa-square"></a>
+        </button>
+        <div id="texts" style="left: 0px">
+          <h6>Turns : 0 Rolls : 0</h6>
+        </div>
+        <div class="pieces">
+          <button class="piece" id="piece1-yellow">
+            <a class="fa-solid fa-heart"></a>
+          </button>
+          <button class="piece" id="piece2-yellow">
+            <a class="fa-regular fa-sun"></a>
+          </button>
+          <button class="piece" id="piece3-yellow">
+            <a class="fa-regular fa-moon"></a>
+          </button>
+          <button class="piece" id="piece4-yellow">
+            <a class="fa-regular fa-paper-plane"></a>
+          </button>
+          <button class="piece" id="piece5-yellow">
+            <a class="fa-solid fa-puzzle-piece"></a>
+          </button>
+          <button class="piece" id="piece6-yellow">
+            <a class="fa-solid fa-crown"></a>
+          </button>
+        </div>
       </div>
     </div>
+  </div>
 
-    <script src="main.js"></script>
-  </body>
+  <div class="pop-up">
+    <div class="info-container" id="pop-up1">
+      <div class="cross-x" id="cross-1">
+        <a class="fa-solid fa-xmark"></a>
+      </div>
+      <h1></h1>
+      <hr />
+      <div class="stats-holder">
+        <div class="stats-matrix" id="display-stats1"
+          style="grid-column: 1; grid-row: 1; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats2"
+          style="grid-column: 2; grid-row: 1; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats3"
+          style="grid-column: 1; grid-row: 2; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats4"
+          style="grid-column: 2; grid-row: 2; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats5"
+          style="grid-column: 1; grid-row: 3; border-right: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats6" style="grid-column: 2; grid-row: 3;"></div>
+      </div>
+      <div class="counter-holder">
+        <div class="counter-matrix" id="display-counter1"><a class="fa-solid fa-dice-one"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter2"><a class="fa-solid fa-dice-two"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter3"><a class="fa-solid fa-dice-three"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter4"><a class="fa-solid fa-dice-four"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter5"><a class="fa-solid fa-dice-five"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter6"><a class="fa-solid fa-dice-six"></a><b></b></div>
+      </div>
+    </div>
+    <div class="info-container" id="pop-up2">
+      <div class="cross-x" id="cross-2">
+        <a class="fa-solid fa-xmark"></a>
+      </div>
+      <h1></h1>
+      <hr />
+      <div class="stats-holder">
+        <div class="stats-matrix" id="display-stats1"
+          style="grid-column: 1; grid-row: 1; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats2"
+          style="grid-column: 2; grid-row: 1; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats3"
+          style="grid-column: 1; grid-row: 2; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats4"
+          style="grid-column: 2; grid-row: 2; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats5"
+          style="grid-column: 1; grid-row: 3; border-right: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats6" style="grid-column: 2; grid-row: 3;"></div>
+      </div>
+      <div class="counter-holder">
+        <div class="counter-matrix" id="display-counter1"><a class="fa-solid fa-dice-one"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter2"><a class="fa-solid fa-dice-two"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter3"><a class="fa-solid fa-dice-three"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter4"><a class="fa-solid fa-dice-four"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter5"><a class="fa-solid fa-dice-five"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter6"><a class="fa-solid fa-dice-six"></a><b></b></div>
+      </div>
+    </div>
+    <div class="info-container" id="pop-up3">
+      <div class="cross-x" id="cross-3">
+        <a class="fa-solid fa-xmark"></a>
+      </div>
+      <h1></h1>
+      <hr />
+      <div class="stats-holder">
+        <div class="stats-matrix" id="display-stats1"
+          style="grid-column: 1; grid-row: 1; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats2"
+          style="grid-column: 2; grid-row: 1; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats3"
+          style="grid-column: 1; grid-row: 2; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats4"
+          style="grid-column: 2; grid-row: 2; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats5"
+          style="grid-column: 1; grid-row: 3; border-right: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats6" style="grid-column: 2; grid-row: 3;"></div>
+      </div>
+      <div class="counter-holder">
+        <div class="counter-matrix" id="display-counter1"><a class="fa-solid fa-dice-one"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter2"><a class="fa-solid fa-dice-two"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter3"><a class="fa-solid fa-dice-three"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter4"><a class="fa-solid fa-dice-four"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter5"><a class="fa-solid fa-dice-five"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter6"><a class="fa-solid fa-dice-six"></a><b></b></div>
+      </div>
+    </div>
+    <div class="info-container" id="pop-up4">
+      <div class="cross-x" id="cross-4">
+        <a class="fa-solid fa-xmark"></a>
+      </div>
+      <h1></h1>
+      <hr />
+      <div class="stats-holder">
+        <div class="stats-matrix" id="display-stats1"
+          style="grid-column: 1; grid-row: 1; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats2"
+          style="grid-column: 2; grid-row: 1; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats3"
+          style="grid-column: 1; grid-row: 2; border-right: 3px solid black; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats4"
+          style="grid-column: 2; grid-row: 2; border-bottom: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats5"
+          style="grid-column: 1; grid-row: 3; border-right: 3px solid black;"></div>
+        <div class="stats-matrix" id="display-stats6" style="grid-column: 2; grid-row: 3;"></div>
+      </div>
+      <div class="counter-holder">
+        <div class="counter-matrix" id="display-counter1"><a class="fa-solid fa-dice-one"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter2"><a class="fa-solid fa-dice-two"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter3"><a class="fa-solid fa-dice-three"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter4"><a class="fa-solid fa-dice-four"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter5"><a class="fa-solid fa-dice-five"></a><b></b></div>
+        <div class="counter-matrix" id="display-counter6"><a class="fa-solid fa-dice-six"></a><b></b></div>
+      </div>
+    </div>
+    <div class="win-container">
+      <div class="cross-x" id="cross-win"></div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
 </html>

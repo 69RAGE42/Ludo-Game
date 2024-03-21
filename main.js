@@ -1,3 +1,4 @@
+//(() => {
 // Ludo Game Mechanicsm
 function include(file) {
   let script = document.createElement('script');
@@ -25,13 +26,18 @@ let hasRolled = false;
 let rolledNumber = -1
 
 let movablePawns = [false, false, false, false]
+
+let allTurns = [0, 0, 0, 0];
+let allRolls = [0, 0, 0, 0];
 // <======== Logic variables ============>
 
 let starPoints = ["#pxl011", "#pxl050", "#pxl024", "#pxl037"];
 let housePoints = ["#pxl003", "#pxl016", "#pxl029", "#pxl042"];
 let tokenShapes = ["fa-solid fa-heart", "fa-regular fa-sun", "fa-regular fa-moon", "fa-regular fa-paper-plane", "fa-solid fa-puzzle-piece", "fa-solid fa-crown"];
+
 let RGBPlayerColors = ["rgba(255, 50, 50, 0.15)", "rgba(255, 255, 50, 0.15)", "rgba(50, 50, 255, 0.15)", "rgba(50, 255, 50, 0.15)"]
 let RGBDiceColors = ["rgba(223, 0, 0, 0.69)", "rgba(207, 207, 0, 0.69)", "rgba(0, 0, 207, 0.69)", "rgba(0, 207, 0, 0.69)"]
+let RGBPopUpColors = ["rgba(150, 50, 50, 0.3)", "rgba(150, 150, 50, 0.3)", "rgba(50, 50, 150, 0.3)", "rgba(50, 150, 50, 0.3)"]
 
 let pawnProperties = {
   "red": {
@@ -68,9 +74,6 @@ let pawnProperties = {
   }
 }
 
-let allTurns = [0, 0, 0, 0];
-let allRolls = [0, 0, 0, 0];
-
 function checkForStars(element) {
   var pxl = document.querySelector(element + " a");
   if (pxl.className == "fa-regular fa-star") {
@@ -100,45 +103,16 @@ function checkForHouses(element) {
 }
 
 // Ludo Game Functionality
-
 let colors = ["red", "yellow", "blue", "green"];
-colors.forEach((element) => {
+colors.forEach(element => {
   for (let i = 1; i <= 6; i++) {
     let pawn = document.querySelector("#piece" + i + "-" + element);
     pawn.addEventListener("click", () => {
       switch (element) {
-        case "red":
-          {
-            document.querySelector("#player1 .pawns .pawn1 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns .pawn2 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns .pawn3 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player1 .pawns .pawn4 a").classList = tokenShapes[i - 1];
-          }
-          break;
-        case "yellow":
-          {
-            document.querySelector("#player2 .pawns .pawn1 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns .pawn2 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns .pawn3 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player2 .pawns .pawn4 a").classList = tokenShapes[i - 1];
-          }
-          break;
-        case "blue":
-          {
-            document.querySelector("#player3 .pawns .pawn1 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns .pawn2 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns .pawn3 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player3 .pawns .pawn4 a").classList = tokenShapes[i - 1];
-          }
-          break;
-        case "green":
-          {
-            document.querySelector("#player4 .pawns .pawn1 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns .pawn2 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns .pawn3 a").classList = tokenShapes[i - 1];
-            document.querySelector("#player4 .pawns .pawn4 a").classList = tokenShapes[i - 1];
-          }
-          break;
+        case "red": for (let j = 1; j != 5; j++) document.querySelector(`#player1 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
+        case "yellow": for (let j = 1; j != 5; j++) document.querySelector(`#player2 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
+        case "blue": for (let j = 1; j != 5; j++) document.querySelector(`#player3 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
+        case "green": for (let j = 1; j != 5; j++) document.querySelector(`#player4 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
       }
     });
   }
@@ -152,37 +126,32 @@ document.querySelector(".controller button").addEventListener("click", () => {
   document.querySelector(".controller button").style.opacity = 0;
   setTimeout(() => { document.querySelector(".controller button").style.display = "none"; }, 1000);
 
-  for (let i = 0; i != 4; i++) {
-    for (let j = 0; j != 4; j++) {
+  for (let i = 0; i != 4; i++)
+    for (let j = 0; j != 4; j++)
       pawnProperties[colors[i]].classList = document.querySelector(`#player${i + 1} .pawns .pawn${j + 1} a`).classList.value;
-    }
-  }
 
-  document.querySelectorAll(".pieces .piece").forEach((element) => {
-    element.style.display = "none";
-    document.querySelector(".players").style.gap = "180px";
-    document.querySelectorAll(".player").forEach((elmnt) => {
-      elmnt.style.height = "360px";
-    });
-  });
+  document.querySelectorAll(".pieces .piece").forEach(element => element.style.display = "none");
+  document.querySelectorAll(".player").forEach(element => element.style.height = "360px");
+  document.querySelector(".players").style.gap = "180px";
 
-  starPoints.forEach((element) => checkForStars(element));
-  housePoints.forEach((element) => checkForHouses(element));
+  starPoints.forEach(element => checkForStars(element));
+  housePoints.forEach(element => checkForHouses(element));
 
   LB = new LudoBoard()
   LB.init([
     { playerId: 1, color: "red" },
-    // { playerId: 2, color: "yellow" },
+    { playerId: 2, color: "yellow" },
     { playerId: 3, color: "blue" },
-    // { playerId: 4, color: "green" }
+    { playerId: 4, color: "green" }
   ])
 
+  // Highlight whose turn it is
   document.querySelector("#player" + LB.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[LB.currentTurn.playerId - 1];
 
   // Dice animation start (ends in dice click event)
   document.querySelector("#dice-" + LB.currentTurn.color).className = "dice blink";
   document.querySelector("#dice-" + LB.currentTurn.color + " a").style.color = RGBDiceColors[LB.currentTurn.playerId - 1];
-  document.querySelectorAll(".player-info").forEach(element => { element.style.display = "flex"; })
+  document.querySelectorAll(".player-info").forEach(element => element.style.display = "none")
 
   gameStarted = true;
   updatePawnPositions()
@@ -190,6 +159,7 @@ document.querySelector(".controller button").addEventListener("click", () => {
 });
 
 // dice buttons
+let diceWords = ["one", "two", "three", "four", "five", "six"] // :>
 document.querySelectorAll(".dice").forEach(clr => {
   clr.addEventListener("click", () => {
     if (!gameStarted || LB.currentTurn.color != clr.id.substring(5, 69) || hasRolled) return;
@@ -197,37 +167,10 @@ document.querySelectorAll(".dice").forEach(clr => {
     hasRolled = true
     let i = 0;
 
-    switch (rolledNumber) {
-      case 1: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-one";
-        break;
-      }
-      case 2: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-two";
-        break;
-      }
-      case 3: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-three";
-        break;
-      }
-      case 4: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-four";
-        break;
-      }
-      case 5: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-five";
-        break;
-      }
-      case 6: {
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-six";
-        break;
-      }
-      case 18: { // special return value on rolling 3 sixes in a row
-        document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-six";
-        break;
-      }
-    }
+    if (rolledNumber === 18) document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-one";
+    else document.querySelector("#" + clr.id + " a").className = "fa-solid fa-dice-" + diceWords[rolledNumber - 1];
 
+    // Get information about what pawns are movable
     for (let pawn of Object.values(LB.pieces[LB.currentTurn.playerId])) {
       if (rolledNumber === 18) break;
       movablePawns[i] = pawn.isMovable(rolledNumber);
@@ -291,8 +234,6 @@ function activatePawnButtons() {
   }
 }
 
-// also if you want i can change these parameter values
-// color: blue, finalPawnName: b1
 let lastPawnBlink = "";
 function singlePawnButtonCallback(color, finalPawnName) {
   if (LB.currentTurn.color != color || !hasRolled) return;
@@ -338,7 +279,7 @@ function dblPawnButtonCallback(color, finalPawnName) {
 
   let oldPlayerId = LB.currentTurn.playerId
 
-  if(LB.currentTurn.availableTurns === 0) allTurns[LB.currentTurn.playerId - 1] += 1
+  if (LB.currentTurn.availableTurns === 0) allTurns[LB.currentTurn.playerId - 1] += 1
   updateTurnsAndRolls(LB.currentTurn.playerId)
 
   LB.nextTurn();
@@ -379,7 +320,8 @@ function updatePawnPositions() {
   // reflect changes as per the new positions 
   for (let color of colors) {
     for (let pos of pawnProperties[color].position) {
-      if(!LB.colorOwners[color]) continue
+      if (!LB.colorOwners[color]) continue
+      document.querySelector("#player-info" + LB.colorOwners[color]).style.display = "flex";
       let pxl = document.querySelector(pos + " a");
       pxl.classList = pawnProperties[color].classList;
       pxl.style.color = pawnProperties[color].style.color
@@ -398,18 +340,30 @@ function gameOver() {
 
 }
 
-// Work In Progress // Do not Disturb
-
+// Work In Progress
 let activePopUps = [false, false, false, false];
 
 document.querySelectorAll(".player-info").forEach(popUps => {
   popUps.addEventListener("click", () => {
     let index = popUps.id.substring(11, 12);
-    if(activePopUps[index - 1] == false) {
-      for(let i = 1; i <= 4; i++) {
+    let color = LB.playerColors[index];
+    if (activePopUps[index - 1] == false) {
+
+      for (let i = 1; i <= 4; i++) {
         document.querySelector("#pop-up" + i).style.display = "none";
         document.querySelector("#cross-" + i).style.display = "none";
       }
+
+      document.querySelector("#pop-up" + index).style.borderColor = RGBDiceColors[index - 1];
+      document.querySelectorAll("#pop-up" + index + " .stats-holder .stats-matrix").forEach(display => {
+        display.style.borderColor = RGBDiceColors[index - 1];
+      })
+      document.querySelectorAll("#pop-up" + index + " .counter-holder .counter-matrix").forEach(display => {
+        display.style.borderColor = RGBDiceColors[index - 1];
+      })
+      document.querySelector("#pop-up" + index + " hr").style.borderColor = RGBDiceColors[index - 1];
+      document.querySelector("#pop-up" + index).style.backgroundColor = RGBPopUpColors[index - 1];
+      document.querySelector("#pop-up" + index + " h1").innerHTML = "Player " + index + " (" + (color[0].toUpperCase() + color.substring(1, 69)) + ") <a class='" + pawnProperties[color].classList + "'></a>";
       document.querySelector("#pop-up" + index).style.display = "flex";
       document.querySelector("#cross-" + index).style.display = "flex";
       activePopUps[index - 1] = true;
@@ -429,3 +383,4 @@ document.querySelectorAll(".cross-x").forEach(cross => {
     activePopUps[index - 1] = false;
   })
 })
+//})();
