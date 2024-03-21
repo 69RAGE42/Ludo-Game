@@ -33,7 +33,10 @@ class LudoPiece {
             this.position += 1
 
             // check if we reached goal
-            this.reachedGoal = LudoWinningPositions[this.color] === this.position
+            if(!this.reachedGoal && LudoWinningPositions[this.color] === this.position) {
+                this.reachedGoal = true;
+                this.board.currentTurn.availableTurns++;
+            }
             if (this.reachedGoal) return
         }
 

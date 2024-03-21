@@ -7,6 +7,8 @@ class LudoBoard {
         this.playerColors = []
         this.rolledSixes = 0;
         this.winners = {}
+        this.currentTurn = {}
+        this.oldTurn = {}
     }
 
     async init(playerData) {
@@ -27,6 +29,7 @@ class LudoBoard {
         }
         let rndPlayer = Math.floor(Math.random() * this.players.length)
         this.currentTurn = { playerId: this.players[rndPlayer].playerId, color: this.players[rndPlayer].color, availableTurns: 1 }
+        LEM.emit(LEMEvents.LudoBegin, this)
     }
 
     getPiece(name, playerId) {
@@ -50,6 +53,8 @@ class LudoBoard {
     nextTurn() {
         if (!this.currentTurn) return;
         if (this.currentTurn.availableTurns) return
+
+        this.oldTurn = this.currentTurn;
 
         if (this.currentTurn.color === "red") {
             let nextPlayer = this.colorOwners["yellow"] || this.colorOwners["blue"] || this.colorOwners["green"]
@@ -83,8 +88,9 @@ class LudoBoard {
         if(this.rolledSixes === 3) {
             this.currentTurn.availableTurns = 0;
             this.rolledSixes = 0;
-            return 18;
+            roll = 18;
         }
+
         return roll;
     }
 

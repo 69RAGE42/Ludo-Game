@@ -5,14 +5,16 @@ const LEMEvents = {
     LudoGoal: "ludoGoal",
     LudoKill: "ludoKill",
     LudoMove: "ludoMove",
+    LudoSelect: "ludoSelect",
     LudoRoll: "ludoRoll",
     LudoUpdate: "ludoUpdate",
     LudoWin: "ludoWin",
+    LudoPieceSingleClick: "LudoPieceSingleClick",
+    LudoPieceDoubleClick: "LudoPieceDoubleClick"
 }
 
 class LudoEventManager {
-    constructor(eventName) {
-        this.eventName = eventName;
+    constructor() {
         this.events = []
     }
 

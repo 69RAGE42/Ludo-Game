@@ -29,6 +29,9 @@ let movablePawns = [false, false, false, false]
 
 let allTurns = [0, 0, 0, 0];
 let allRolls = [0, 0, 0, 0];
+
+let colors = ["red", "yellow", "blue", "green"];
+let diceWords = ["one", "two", "three", "four", "five", "six"]
 // <======== Logic variables ============>
 
 let starPoints = ["#pxl011", "#pxl050", "#pxl024", "#pxl037"];
@@ -103,40 +106,21 @@ function checkForHouses(element) {
 }
 
 // Ludo Game Functionality
-let colors = ["red", "yellow", "blue", "green"];
 colors.forEach(element => {
   for (let i = 1; i <= 6; i++) {
     let pawn = document.querySelector("#piece" + i + "-" + element);
     pawn.addEventListener("click", () => {
-      switch (element) {
-        case "red": for (let j = 1; j != 5; j++) document.querySelector(`#player1 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
-        case "yellow": for (let j = 1; j != 5; j++) document.querySelector(`#player2 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
-        case "blue": for (let j = 1; j != 5; j++) document.querySelector(`#player3 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
-        case "green": for (let j = 1; j != 5; j++) document.querySelector(`#player4 .pawns .pawn${j} a`).classList = tokenShapes[i - 1]; break;
+      for (let j = 1; j != 5; j++) {
+        document.querySelector(`#player${colors.indexOf(element) + 1} .pawns .pawn${j} a`).classList.value = tokenShapes[i - 1];
+        pawnProperties[element].classList = tokenShapes[i - 1];
       }
     });
   }
 });
 
 document.querySelector(".controller button").addEventListener("click", () => {
-  if (gameStarted)
-    return;
-
-  document.querySelector(".controller button").style.backdropFilter = "blur(0px)";
-  document.querySelector(".controller button").style.opacity = 0;
-  setTimeout(() => { document.querySelector(".controller button").style.display = "none"; }, 1000);
-
-  for (let i = 0; i != 4; i++)
-    for (let j = 0; j != 4; j++)
-      pawnProperties[colors[i]].classList = document.querySelector(`#player${i + 1} .pawns .pawn${j + 1} a`).classList.value;
-
-  document.querySelectorAll(".pieces .piece").forEach(element => element.style.display = "none");
-  document.querySelectorAll(".player").forEach(element => element.style.height = "360px");
-  document.querySelector(".players").style.gap = "180px";
-
-  starPoints.forEach(element => checkForStars(element));
-  housePoints.forEach(element => checkForHouses(element));
-
+  if (gameStarted) return;
+  activateEvents();
   LB = new LudoBoard()
   LB.init([
     { playerId: 1, color: "red" },
@@ -144,22 +128,9 @@ document.querySelector(".controller button").addEventListener("click", () => {
     { playerId: 3, color: "blue" },
     { playerId: 4, color: "green" }
   ])
-
-  // Highlight whose turn it is
-  document.querySelector("#player" + LB.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[LB.currentTurn.playerId - 1];
-
-  // Dice animation start (ends in dice click event)
-  document.querySelector("#dice-" + LB.currentTurn.color).className = "dice blink";
-  document.querySelector("#dice-" + LB.currentTurn.color + " a").style.color = RGBDiceColors[LB.currentTurn.playerId - 1];
-  document.querySelectorAll(".player-info").forEach(element => element.style.display = "none")
-
-  gameStarted = true;
-  updatePawnPositions()
-  activatePawnButtons();
 });
 
 // dice buttons
-let diceWords = ["one", "two", "three", "four", "five", "six"] // :>
 document.querySelectorAll(".dice").forEach(clr => {
   clr.addEventListener("click", () => {
     if (!gameStarted || LB.currentTurn.color != clr.id.substring(5, 69) || hasRolled) return;
@@ -178,13 +149,12 @@ document.querySelectorAll(".dice").forEach(clr => {
     }
 
     i = 0;
-    let oldPlayerId = LB.currentTurn.playerId;
+    let oldTurn = LB.currentTurn;
 
     // blud really rolled three sixes in a row :skull:
     if (rolledNumber === 18 || !movablePawns.includes(true)) {
       // Dice animation end (restarts again in dblPawnButtonCallback)
       document.querySelector("#dice-" + LB.currentTurn.color).className = "dice";
-      let oldPlayerColor = LB.currentTurn.color;
 
       LB.nextTurn();
       hasRolled = false;
@@ -192,10 +162,10 @@ document.querySelectorAll(".dice").forEach(clr => {
       movablePawns = [false, false, false, false]
 
       // remove glow from the old current player, and add it to the next player
-      document.querySelector("#player" + oldPlayerId).style.backgroundColor = "transparent";
+      document.querySelector("#player" + oldTurn.playerId).style.backgroundColor = "transparent";
       document.querySelector("#player" + LB.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[LB.currentTurn.playerId - 1];
 
-      document.querySelector("#dice-" + oldPlayerColor + " a").style.color = "rgba(255, 255, 255, 0.75)";
+      document.querySelector("#dice-" + oldTurn.color + " a").style.color = "rgba(255, 255, 255, 0.75)";
       document.querySelector("#dice-" + LB.currentTurn.color + " a").style.color = RGBDiceColors[LB.currentTurn.playerId - 1];
 
       // Dice animation start (ends in dice click event)
@@ -205,8 +175,8 @@ document.querySelectorAll(".dice").forEach(clr => {
       return
     }
 
-    allRolls[oldPlayerId - 1] += rolledNumber;
-    updateTurnsAndRolls(oldPlayerId)
+    allRolls[oldTurn.playerId - 1] += rolledNumber;
+    updateTurnsAndRolls(oldTurn.playerId)
 
     // Dice animation end (restarts again in dblPawnButtonCallback)
     document.querySelector("#dice-" + LB.currentTurn.color).className = "dice";
@@ -277,7 +247,7 @@ function dblPawnButtonCallback(color, finalPawnName) {
     pawn.className = "pawn" + String(i + 1) // what if
   })
 
-  let oldPlayerId = LB.currentTurn.playerId
+  let oldTurn = LB.currentTurn
 
   if (LB.currentTurn.availableTurns === 0) allTurns[LB.currentTurn.playerId - 1] += 1
   updateTurnsAndRolls(LB.currentTurn.playerId)
@@ -288,15 +258,12 @@ function dblPawnButtonCallback(color, finalPawnName) {
   movablePawns = [false, false, false, false]
 
   // remove glow from the old current player, and add it to the next player
-  document.querySelector("#player" + oldPlayerId).style.backgroundColor = "transparent";
+  document.querySelector("#player" + oldTurn.playerId).style.backgroundColor = "transparent";
   document.querySelector("#player" + LB.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[LB.currentTurn.playerId - 1];
 
 
   // remove blinking here
-  if (lastPawnBlink && lastPawnBlink.length) {
-    document.querySelector(lastPawnBlink).id = "";
-    // document.querySelector("#dice-" + oldPlayerColor + " a").style.color = "rgba(255, 255, 255, 0.75)";
-  }
+  if (lastPawnBlink && lastPawnBlink.length) document.querySelector(lastPawnBlink).id = "";
 
   // Dice animation start again
   document.querySelector("#dice-" + LB.currentTurn.color).className = "dice blink";
@@ -383,4 +350,44 @@ document.querySelectorAll(".cross-x").forEach(cross => {
     activePopUps[index - 1] = false;
   })
 })
+
+// this should only be called once before game start!!!!!!
+function activateEvents() {
+
+  // Called when the game begins (when the "START" button is pressed)
+  LEM.on(LEMEvents.LudoBegin, (ludoBoard) => {
+    // Game has started, update pawns' visual positions and activate 'em buttons
+    gameStarted = true;
+    updatePawnPositions();
+    activatePawnButtons();
+
+    // Draw star and house points in board
+    starPoints.forEach(element => checkForStars(element));
+    housePoints.forEach(element => checkForHouses(element));
+
+    // <==================== DOM Functions ====================>
+
+    // Hide the middle "START" button immediately (1 sec animation)
+    document.querySelector(".controller button").style.backdropFilter = "blur(0px)";
+    document.querySelector(".controller button").style.opacity = 0;
+    setTimeout(() => {
+      document.querySelector(".controller button").style.display = "none";
+    }, 1000);
+
+    // Hide pawn variant selection, and adjust the players' panels according to that
+    document.querySelectorAll(".pieces .piece").forEach(element => element.style.display = "none");
+    document.querySelectorAll(".player").forEach(element => element.style.height = "360px");
+    document.querySelector(".players").style.gap = "180px";
+
+    // Highlight whose turn it is
+    document.querySelector("#player" + ludoBoard.currentTurn.playerId).style.backgroundColor = RGBPlayerColors[ludoBoard.currentTurn.playerId - 1];
+
+    // Start their dice animation
+    document.querySelector("#dice-" + ludoBoard.currentTurn.color).className = "dice blink";
+    document.querySelector("#dice-" + ludoBoard.currentTurn.color + " a").style.color = RGBDiceColors[ludoBoard.currentTurn.playerId - 1];
+
+    // <==================== DOM Functions ====================>
+  })
+}
+
 //})();
