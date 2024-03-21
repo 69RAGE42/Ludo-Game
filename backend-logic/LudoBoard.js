@@ -79,6 +79,7 @@ class LudoBoard {
 
     roll() {
         let roll = Math.ceil(Math.random() * 6)
+        rollCounter[this.currentTurn.playerId - 1][roll - 1] += 1;
         this.currentTurn.availableTurns--;
         if(roll == 6) {
             this.currentTurn.availableTurns++;
@@ -88,6 +89,8 @@ class LudoBoard {
         if(this.rolledSixes === 3) {
             this.currentTurn.availableTurns = 0;
             this.rolledSixes = 0;
+            rollCounter[this.currentTurn.playerId - 1][roll - 1] -= 1;
+            threeSixes[this.currentTurn.playerId - 1] += 1;
             roll = 18;
         }
 

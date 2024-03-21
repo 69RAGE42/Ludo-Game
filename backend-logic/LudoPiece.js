@@ -59,8 +59,13 @@ class LudoPiece {
     }
 
     kill(target) {
-        if (target.isSafe) return;
+        if (target.isSafe) {
+            gotSaved[target.playerId - 1] += 1;
+            return;
+        }
         target.lock()
+        gotCaptured[target.playerId - 1] += 1;
+        killedPawns[this.playerId - 1] += 1;
         this.wasLastKill = true
         this.board.currentTurn.availableTurns++;
         this.board.rolledSixes = 0;

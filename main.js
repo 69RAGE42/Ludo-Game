@@ -41,6 +41,17 @@ let tokenShapes = ["fa-solid fa-heart", "fa-regular fa-sun", "fa-regular fa-moon
 let RGBPlayerColors = ["rgba(255, 50, 50, 0.15)", "rgba(255, 255, 50, 0.15)", "rgba(50, 50, 255, 0.15)", "rgba(50, 255, 50, 0.15)"]
 let RGBDiceColors = ["rgba(223, 0, 0, 0.69)", "rgba(207, 207, 0, 0.69)", "rgba(0, 0, 207, 0.69)", "rgba(0, 207, 0, 0.69)"]
 let RGBPopUpColors = ["rgba(200, 150, 150, 0.3)", "rgba(200, 200, 150, 0.3)", "rgba(150, 150, 200, 0.3)", "rgba(150, 200, 150, 0.3)"]
+let rollCounter = [[], [], [], []];
+let killedPawns = [0, 0, 0, 0];
+let gotCaptured = [0, 0, 0, 0];
+let gotSaved = [0, 0, 0, 0];
+let threeSixes = [0, 0, 0, 0];
+
+for(let i = 0; i < 4; i++) {
+  for(let j = 0; j < 6; j++) {
+    rollCounter[i][j] = 0;
+  }
+}
 
 let pawnProperties = {
   "red": {
@@ -76,7 +87,7 @@ let pawnProperties = {
     }
   }
 }
-// test
+
 function checkForStars(element) {
   var pxl = document.querySelector(element + " a");
   if (pxl.className == "fa-regular fa-star") {
@@ -302,6 +313,16 @@ function updateTurnsAndRolls(playerId) {
     "Turns : " + allTurns[playerId - 1] + " Rolls : " + allRolls[playerId - 1];
 }
 
+function updateStats(playerId) {
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats1").innerHTML = "Killed Pawns: " + killedPawns[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats2").innerHTML = "Got Captured: " + gotCaptured[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats4").innerHTML = "Got Saved: " + gotSaved[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats5").innerHTML = "Three Sixes: " + threeSixes[playerId - 1];
+  for(let i = 1; i <= 6; i++) {
+    document.querySelector("#pop-up" + playerId + " .counter-holder #display-counter" + i + " b").innerHTML = rollCounter[playerId - 1][i - 1];
+  }
+}
+
 // called when n - 1 amount of people win the game
 function gameOver() {
 
@@ -333,6 +354,7 @@ document.querySelectorAll(".player-info").forEach(popUps => {
       document.querySelector("#pop-up" + index + " h1").innerHTML = "Player " + index + " (" + (color[0].toUpperCase() + color.substring(1, 69)) + ") <a class='" + pawnProperties[color].classList + "'></a>";
       document.querySelector("#pop-up" + index).style.display = "flex";
       document.querySelector("#cross-" + index).style.display = "flex";
+      updateStats(index);
       activePopUps[index - 1] = true;
     } else {
       document.querySelector("#pop-up" + index).style.display = "none";
