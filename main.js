@@ -41,12 +41,16 @@ let tokenShapes = ["fa-solid fa-heart", "fa-regular fa-sun", "fa-regular fa-moon
 let RGBPlayerColors = ["rgba(255, 50, 50, 0.15)", "rgba(255, 255, 50, 0.15)", "rgba(50, 50, 255, 0.15)", "rgba(50, 255, 50, 0.15)"]
 let RGBDiceColors = ["rgba(223, 0, 0, 0.69)", "rgba(207, 207, 0, 0.69)", "rgba(0, 0, 207, 0.69)", "rgba(0, 207, 0, 0.69)"]
 let RGBPopUpColors = ["rgba(200, 150, 150, 0.3)", "rgba(200, 200, 150, 0.3)", "rgba(150, 150, 200, 0.3)", "rgba(150, 200, 150, 0.3)"]
-let rollCounter = [[], [], [], []];
+
 let killedPawns = [0, 0, 0, 0];
 let gotCaptured = [0, 0, 0, 0];
 let gotSaved = [0, 0, 0, 0];
 let threeSixes = [0, 0, 0, 0];
+let wastedTurns = [0, 0, 0, 0];
+let wastedRolls = [0, 0, 0, 0];
+let score = [0, 0, 0, 0];
 
+let rollCounter = [[], [], [], []];
 for(let i = 0; i < 4; i++) {
   for(let j = 0; j < 6; j++) {
     rollCounter[i][j] = 0;
@@ -187,7 +191,7 @@ document.querySelectorAll(".dice").forEach(clr => {
     }
 
     allRolls[oldTurn.playerId - 1] += rolledNumber;
-    updateTurnsAndRolls(oldTurn.playerId)
+    updateTurnsRollsScore(oldTurn.playerId)
 
     // Dice animation end (restarts again in dblPawnButtonCallback)
     document.querySelector("#dice-" + LB.currentTurn.color).className = "dice";
@@ -258,10 +262,10 @@ function dblPawnButtonCallback(color, finalPawnName) {
     pawn.className = "pawn" + String(i + 1) // what if
   })
 
-  let oldTurn = LB.currentTurn
+  let oldTurn = LB.currentTurn;
 
   if (LB.currentTurn.availableTurns === 0) allTurns[LB.currentTurn.playerId - 1] += 1
-  updateTurnsAndRolls(LB.currentTurn.playerId)
+  updateTurnsRollsScore(LB.currentTurn.playerId)
 
   LB.nextTurn();
   hasRolled = false;
@@ -308,16 +312,22 @@ function updatePawnPositions() {
   }
 }
 
-function updateTurnsAndRolls(playerId) {
+function updateTurnsRollsScore(playerId) {
   document.querySelector("#player" + playerId + " #texts h6").innerHTML =
-    "Turns : " + allTurns[playerId - 1] + " Rolls : " + allRolls[playerId - 1];
+    "Turns : " + allTurns[playerId - 1] + " Rolls : " + allRolls[playerId - 1] + " Score : " + score[playerId - 1];
 }
 
 function updateStats(playerId) {
+  let rolls = 0;
+  for(let i = 0; i < 6; i++) rolls += (i + 1) * rollCounter[playerId - 1][i];
+  wastedRolls[playerId - 1] = rolls - allRolls[playerId - 1];
+
   document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats1").innerHTML = "Killed Pawns: " + killedPawns[playerId - 1];
   document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats2").innerHTML = "Got Captured: " + gotCaptured[playerId - 1];
-  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats4").innerHTML = "Got Saved: " + gotSaved[playerId - 1];
-  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats5").innerHTML = "Three Sixes: " + threeSixes[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats3").innerHTML = "Got Saved: " + gotSaved[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats4").innerHTML = "Three Sixes: " + threeSixes[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats5").innerHTML = "Wasted Turns: " + wastedTurns[playerId - 1];
+  document.querySelector("#pop-up" + playerId + " .stats-holder #display-stats6").innerHTML = "Wasted Rolls: " + wastedRolls[playerId - 1];
   for(let i = 1; i <= 6; i++) {
     document.querySelector("#pop-up" + playerId + " .counter-holder #display-counter" + i + " b").innerHTML = rollCounter[playerId - 1][i - 1];
   }
